@@ -1,0 +1,227 @@
+/* إعادة تعيين الأساسيات */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Segoe UI', 'Arial', sans-serif;
+}
+
+/* تنسيقات عامة */
+body {
+    background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
+    min-height: 100vh;
+    color: #333;
+    direction: rtl;
+    text-align: right;
+    line-height: 1.6;
+    padding: 0 20px;
+}
+
+/* شريط التنقل */
+nav {
+    background: linear-gradient(to right, #2c3e50, #4a6491);
+    padding: 20px 0;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+}
+
+nav a {
+    color: white;
+    text-decoration: none;
+    padding: 12px 25px;
+    margin: 0 10px;
+    border-radius: 25px;
+    transition: all 0.3s ease;
+    font-size: 18px;
+    font-weight: 500;
+    display: inline-block;
+}
+
+nav a:hover {
+    background: rgba(255, 255, 255, 0.2);
+    transform: translateY(-3px);
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
+}
+
+nav a:first-child {
+    background: #3498db;
+}
+
+/* العنوان الرئيسي */
+h1 {
+    text-align: center;
+    margin: 40px 0 30px;
+    color: #2c3e50;
+    font-size: 2.8em;
+    position: relative;
+    padding-bottom: 15px;
+}
+
+h1:after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    right: 50%;
+    transform: translateX(50%);
+    width: 100px;
+    height: 4px;
+    background: linear-gradient(to right, #3498db, #2c3e50);
+    border-radius: 2px;
+}
+
+/* الصورة */
+img {
+    display: block;
+    margin: 30px auto;
+    border-radius: 15px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+    border: 5px solid white;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+img:hover {
+    transform: scale(1.03);
+    box-shadow: 0 15px 40px rgba(0, 0, 0, 0.25);
+}
+
+/* المحتوى الرئيسي */
+.content {
+    max-width: 1200px;
+    margin: 40px auto;
+    padding: 40px;
+    background: white;
+    border-radius: 20px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
+}
+
+/* الأقسام */
+.section {
+    margin-bottom: 40px;
+    padding-bottom: 30px;
+    border-bottom: 2px solid #eee;
+}
+
+.section:last-child {
+    border-bottom: none;
+}
+
+.section h2 {
+    color: #2c3e50;
+    margin-bottom: 20px;
+    font-size: 1.8em;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.section h2:before {
+    content: '▶';
+    color: #3498db;
+    font-size: 0.8em;
+}
+
+/* البطاقات */
+.cards {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 25px;
+    margin-top: 30px;
+}
+
+.card {
+    background: linear-gradient(145deg, #ffffff, #f0f0f0);
+    padding: 25px;
+    border-radius: 15px;
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.08);
+    transition: all 0.3s ease;
+    border: 1px solid rgba(52, 152, 219, 0.1);
+}
+
+.card:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 15px 35px rgba(0, 0, 0, 0.12);
+    border-color: #3498db;
+}
+
+.card h3 {
+    color: #2c3e50;
+    margin-bottom: 15px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+/* القوائم */
+ul {
+    list-style: none;
+    padding-right: 20px;
+}
+
+ul li {
+    padding: 8px 0;
+    position: relative;
+}
+
+ul li:before {
+    content: '✓';
+    color: #27ae60;
+    font-weight: bold;
+    position: absolute;
+    right: -20px;
+}
+
+/* التذييل */
+footer {
+    text-align: center;
+    padding: 30px;
+    margin-top: 50px;
+    background: #2c3e50;
+    color: white;
+    border-radius: 15px 15px 0 0;
+}
+
+/* تصميم متجاوب */
+@media (max-width: 768px) {
+    body {
+        padding: 0 10px;
+    }
+    
+    nav a {
+        display: block;
+        margin: 10px auto;
+        text-align: center;
+        max-width: 200px;
+    }
+    
+    h1 {
+        font-size: 2em;
+    }
+    
+    .content {
+        padding: 20px;
+    }
+    
+    .cards {
+        grid-template-columns: 1fr;
+    }
+}
+
+/* مؤشرات تفاعلية */
+.clickable {
+    cursor: pointer;
+    transition: opacity 0.3s;
+}
+
+.clickable:hover {
+    opacity: 0.8;
+}
+
+/* تأثيرات نصية */
+.highlight {
+    background: linear-gradient(120deg, #a1c4fd 0%, #c2e9fb 100%);
+    padding: 2px 8px;
+    border-radius: 4px;
+    font-weight: 600;
+}
