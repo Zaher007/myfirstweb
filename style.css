@@ -17,8 +17,6 @@ body {
     line-height: 1.6;
     transition: all 0.3s ease;
     padding-top: 80px !important; /* For fixed navigation */
-    direction: ltr;
-    text-align: left;
 }
 
 /* ===== FIXED NAVIGATION ===== */
@@ -111,6 +109,114 @@ nav {
 .nav-links a.active {
     background: #3498db;
     box-shadow: 0 4px 15px rgba(52, 152, 219, 0.3);
+}
+
+/* ===== LANGUAGE SWITCHER STYLES ===== */
+.nav-language {
+    position: relative;
+    margin-left: 20px;
+}
+
+.lang-toggle {
+    background: rgba(255, 255, 255, 0.15);
+    border: 2px solid rgba(255, 255, 255, 0.3);
+    border-radius: 25px;
+    padding: 8px 20px;
+    color: white;
+    font-weight: 500;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    transition: all 0.3s ease;
+    min-width: 150px;
+    justify-content: space-between;
+    border: none;
+    outline: none;
+    font-size: 16px;
+}
+
+.lang-toggle:hover {
+    background: rgba(255, 255, 255, 0.25);
+    border-color: white;
+    transform: translateY(-2px);
+    box-shadow: 0 4px 15px rgba(255, 255, 255, 0.2);
+}
+
+.lang-current {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.lang-flag {
+    font-size: 1.2em;
+}
+
+.lang-name {
+    font-size: 0.9em;
+}
+
+.lang-arrow {
+    font-size: 0.8em;
+    transition: transform 0.3s ease;
+}
+
+.nav-language.open .lang-arrow {
+    transform: rotate(180deg);
+}
+
+.lang-dropdown {
+    position: absolute;
+    top: 100%;
+    right: 0;
+    background: white;
+    border-radius: 15px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.15);
+    padding: 10px;
+    min-width: 180px;
+    display: none;
+    z-index: 1001;
+    margin-top: 10px;
+    animation: fadeIn 0.3s ease;
+    border: 1px solid #eee;
+}
+
+.nav-language.open .lang-dropdown {
+    display: block;
+}
+
+@keyframes fadeIn {
+    from { opacity: 0; transform: translateY(-10px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+.lang-option {
+    width: 100%;
+    padding: 12px 15px;
+    border: none;
+    background: transparent;
+    border-radius: 10px;
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    text-align: left;
+    color: #333;
+    font-weight: 500;
+    font-size: 16px;
+}
+
+.lang-option:hover {
+    background: #f8f9fa;
+    transform: translateX(5px);
+}
+
+.lang-option.active {
+    background: linear-gradient(135deg, #3498db, #2c3e50);
+    color: white;
+    box-shadow: 0 4px 10px rgba(52, 152, 219, 0.3);
 }
 
 /* ===== MAIN CONTENT ===== */
@@ -625,6 +731,74 @@ textarea.form-input {
     font-weight: 600;
 }
 
+/* ===== RTL SUPPORT ===== */
+[dir="rtl"] {
+    text-align: right;
+}
+
+[dir="rtl"] .nav-language {
+    margin-left: 0;
+    margin-right: 20px;
+}
+
+[dir="rtl"] .lang-dropdown {
+    right: auto;
+    left: 0;
+}
+
+[dir="rtl"] .lang-option:hover {
+    transform: translateX(-5px);
+}
+
+[dir="rtl"] .lang-toggle {
+    flex-direction: row-reverse;
+}
+
+[dir="rtl"] ul {
+    padding-left: 0;
+    padding-right: 20px;
+}
+
+[dir="rtl"] ul li:before {
+    left: auto;
+    right: -20px;
+}
+
+[dir="rtl"] .result-item {
+    border-left: none;
+    border-right: 4px solid #3498db;
+}
+
+[dir="rtl"] .result-item.success {
+    border-right-color: #28a745;
+    border-left: none;
+}
+
+[dir="rtl"] .result-item.error {
+    border-right-color: #dc3545;
+    border-left: none;
+}
+
+[dir="rtl"] .result-item:hover {
+    transform: translateX(-5px);
+}
+
+[dir="rtl"] #theme-changer {
+    right: auto;
+    left: 20px;
+}
+
+[dir="rtl"] .progress-steps::before {
+    left: auto;
+    right: 0;
+}
+
+[dir="rtl"] .form-container::before {
+    left: auto;
+    right: 0;
+    background: linear-gradient(to left, #4361ee, #0088cc);
+}
+
 /* ===== RESPONSIVE DESIGN ===== */
 @media (max-width: 1200px) {
     .content, .nav-container, .form-container {
@@ -657,6 +831,24 @@ textarea.form-input {
     .nav-links a {
         padding: 8px 15px;
         font-size: 14px;
+    }
+    
+    /* Language switcher */
+    .nav-language {
+        margin: 10px 0;
+        width: 100%;
+        text-align: center;
+    }
+    
+    .lang-toggle {
+        width: 100%;
+        justify-content: center;
+    }
+    
+    .lang-dropdown {
+        position: static;
+        width: 100%;
+        margin-top: 5px;
     }
     
     /* Content */
@@ -712,6 +904,11 @@ textarea.form-input {
         width: 45px;
         height: 45px;
         font-size: 1.3em;
+    }
+    
+    [dir="rtl"] #theme-changer {
+        left: 10px;
+        right: auto;
     }
 }
 

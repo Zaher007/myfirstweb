@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>My Personal Website - Home</title>
+    <title data-lang="homeTitle">My Personal Website - Home</title>
     <link rel="stylesheet" href="style.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <style>
@@ -213,27 +213,49 @@
     <nav>
         <div class="nav-container">
             <a href="index.html" class="logo">
-                <i class="fas fa-code"></i> My Personal Website
+                <i class="fas fa-code"></i> <span data-lang="footerTitle">My Personal Website</span>
             </a>
             
             <div class="nav-links">
                 <a href="index.html" class="active">
-                    <i class="fas fa-home"></i> Home
+                    <i class="fas fa-home"></i> <span data-lang="home">Home</span>
                 </a>
                 <a href="pages/about.html">
-                    <i class="fas fa-user"></i> About Me
+                    <i class="fas fa-user"></i> <span data-lang="about">About Me</span>
                 </a>
                 <a href="pages/contact.html">
-                    <i class="fas fa-envelope"></i> Contact
+                    <i class="fas fa-envelope"></i> <span data-lang="contact">Contact</span>
                 </a>
+                
+                <!-- Language Switcher -->
+                <div class="nav-language" id="navLanguage">
+                    <button class="lang-toggle" onclick="toggleLanguageDropdown()">
+                        <div class="lang-current">
+                            <span class="lang-flag" id="currentFlag">🇺🇸</span>
+                            <span class="lang-name" id="currentLang">English</span>
+                        </div>
+                        <span class="lang-arrow">▼</span>
+                    </button>
+                    
+                    <div class="lang-dropdown">
+                        <button class="lang-option" onclick="changeLanguage('en')">
+                            <span class="lang-flag">🇺🇸</span>
+                            <span class="lang-text">English</span>
+                        </button>
+                        <button class="lang-option" onclick="changeLanguage('ar')">
+                            <span class="lang-flag">🇸🇦</span>
+                            <span class="lang-text">العربية</span>
+                        </button>
+                    </div>
+                </div>
             </div>
         </div>
     </nav>
 
     <!-- Hero Section -->
     <section class="hero-section">
-        <h1 class="hero-title">Welcome to My Personal Website</h1>
-        <p class="hero-subtitle">
+        <h1 class="hero-title" data-lang="welcomeTitle">Welcome to My Personal Website</h1>
+        <p class="hero-subtitle" data-lang="welcomeSubtitle">
             This is my first website that I built myself. I'm learning and developing my skills in web design and development
         </p>
         
@@ -244,10 +266,10 @@
              onerror="this.src='data:image/svg+xml;utf8,<svg xmlns=\"http://www.w3.org/2000/svg\" width=\"400\" height=\"300\"><rect width=\"400\" height=\"300\" fill=\"%23667eea\"/><text x=\"200\" y=\"150\" font-family=\"Arial\" font-size=\"24\" fill=\"white\" text-anchor=\"middle\">Welcome</text></svg>'">
         
         <div class="hero-buttons">
-            <a href="#features" class="hero-btn primary">
+            <a href="#features" class="hero-btn primary" data-lang="discoverFeatures">
                 <i class="fas fa-star"></i> Discover Features
             </a>
-            <a href="pages/about.html" class="hero-btn secondary">
+            <a href="pages/about.html" class="hero-btn secondary" data-lang="getToKnowMe">
                 <i class="fas fa-user"></i> Get to Know Me
             </a>
         </div>
@@ -257,94 +279,94 @@
     <div class="content">
         <!-- Features -->
         <section id="features">
-            <h2 style="text-align: center; color: #333; margin-bottom: 40px;">
+            <h2 style="text-align: center; color: #333; margin-bottom: 40px;" data-lang="siteFeatures">
                 <i class="fas fa-crown"></i> Website Features
             </h2>
             
             <div class="features">
                 <div class="feature-card">
                     <div class="feature-icon">🎨</div>
-                    <h3 class="feature-title">Modern Design</h3>
-                    <p>Responsive design that works on all devices with a modern and attractive look</p>
+                    <h3 class="feature-title" data-lang="modernDesign">Modern Design</h3>
+                    <p data-lang="modernDesignDesc">Responsive design that works on all devices with a modern and attractive look</p>
                 </div>
                 
                 <div class="feature-card">
                     <div class="feature-icon">⚡</div>
-                    <h3 class="feature-title">Fast Performance</h3>
-                    <p>Fast loading of sections and images with performance optimization</p>
+                    <h3 class="feature-title" data-lang="fastPerformance">Fast Performance</h3>
+                    <p data-lang="fastPerformanceDesc">Fast loading of sections and images with performance optimization</p>
                 </div>
                 
                 <div class="feature-card">
                     <div class="feature-icon">🔧</div>
-                    <h3 class="feature-title">Easy to Modify</h3>
-                    <p>Clean code that is easy to modify and add to</p>
+                    <h3 class="feature-title" data-lang="easyToModify">Easy to Modify</h3>
+                    <p data-lang="easyToModifyDesc">Clean code that is easy to modify and add to</p>
                 </div>
                 
                 <div class="feature-card">
                     <div class="feature-icon">📱</div>
-                    <h3 class="feature-title">Fully Interactive</h3>
-                    <p>Interactions and effects that make the website alive</p>
+                    <h3 class="feature-title" data-lang="fullyInteractive">Fully Interactive</h3>
+                    <p data-lang="fullyInteractiveDesc">Interactions and effects that make the website alive</p>
                 </div>
             </div>
         </section>
 
         <!-- Statistics -->
         <section class="stats">
-            <h2 style="color: #333; margin-bottom: 30px;">📊 Website Statistics</h2>
+            <h2 style="color: #333; margin-bottom: 30px;" data-lang="websiteStats">📊 Website Statistics</h2>
             <div class="stats-grid">
                 <div class="stat-item">
                     <span class="stat-number" id="visitors">0</span>
-                    <span class="stat-label">Visitors</span>
+                    <span class="stat-label" data-lang="visitors">Visitors</span>
                 </div>
                 <div class="stat-item">
                     <span class="stat-number" id="pages">3</span>
-                    <span class="stat-label">Pages</span>
+                    <span class="stat-label" data-lang="pages">Pages</span>
                 </div>
                 <div class="stat-item">
                     <span class="stat-number" id="features-count">4</span>
-                    <span class="stat-label">Features</span>
+                    <span class="stat-label" data-lang="featuresCount">Features</span>
                 </div>
                 <div class="stat-item">
                     <span class="stat-number" id="days">1</span>
-                    <span class="stat-label">Days</span>
+                    <span class="stat-label" data-lang="days">Days</span>
                 </div>
             </div>
         </section>
 
         <!-- Quick Links -->
         <div class="quick-links">
-            <a href="pages/about.html" class="quick-link">
+            <a href="pages/about.html" class="quick-link" data-lang="aboutInfo">
                 <i class="fas fa-info-circle"></i> About Me Info
             </a>
-            <a href="pages/contact.html" class="quick-link">
+            <a href="pages/contact.html" class="quick-link" data-lang="contactMe">
                 <i class="fas fa-comments"></i> Contact Me
             </a>
-            <a href="https://github.com" target="_blank" class="quick-link">
+            <a href="https://github.com" target="_blank" class="quick-link" data-lang="myProjects">
                 <i class="fab fa-github"></i> My Projects
             </a>
         </div>
 
         <!-- Latest Updates -->
         <section style="background: white; padding: 30px; border-radius: 15px; margin: 40px 0; border: 2px solid #667eea;">
-            <h2 style="color: #667eea; margin-bottom: 20px;">
+            <h2 style="color: #667eea; margin-bottom: 20px;" data-lang="latestUpdates">
                 <i class="fas fa-sync-alt"></i> Latest Updates
             </h2>
             <ul style="list-style: none; padding-left: 20px;">
                 <li style="padding: 10px 0; border-bottom: 1px solid #eee;">
                     <i class="fas fa-check-circle" style="color: #28a745;"></i>
-                    <span>Website fully created</span>
+                    <span data-lang="websiteCreated">Website fully created</span>
                 </li>
                 <li style="padding: 10px 0; border-bottom: 1px solid #eee;">
                     <i class="fas fa-check-circle" style="color: #28a745;"></i>
-                    <span>Added 'About Me' and 'Contact' pages</span>
+                    <span data-lang="pagesAdded">Added 'About Me' and 'Contact' pages</span>
                 </li>
                 <li style="padding: 10px 0; border-bottom: 1px solid #eee;">
                     <i class="fas fa-check-circle" style="color: #28a745;"></i>
-                    <span>Responsive design for all screens</span>
+                    <span data-lang="responsiveDesign">Responsive design for all screens</span>
                 </li>
                 <li style="padding: 10px 0;">
                     <i class="fas fa-spinner" style="color: #ffc107;"></i>
-                    <span>Adding blog soon</span>
+                    <span data-lang="blogSoon">Adding blog soon</span>
                 </li>
             </ul>
         </section>
@@ -358,9 +380,9 @@
         <div style="display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap;">
             <div>
                 <h3 style="color: white; margin-bottom: 10px;">
-                    <i class="fas fa-code"></i> My Personal Website
+                    <i class="fas fa-code"></i> <span data-lang="footerTitle">My Personal Website</span>
                 </h3>
-                <p style="opacity: 0.8; font-size: 0.9em;">
+                <p style="opacity: 0.8; font-size: 0.9em;" data-lang="footerSubtitle">
                     My first website - A web development learning journey
                 </p>
             </div>
@@ -372,22 +394,23 @@
         </div>
         
         <div style="text-align: center; margin-top: 30px; padding-top: 20px; border-top: 1px solid rgba(255,255,255,0.1);">
-            <p style="opacity: 0.7;">© 2024 My Personal Website | Developed with <i class="fas fa-heart" style="color: #f72585;"></i></p>
+            <p style="opacity: 0.7;" data-lang="developedWithHeart">© 2024 My Personal Website | Developed with <i class="fas fa-heart" style="color: #f72585;"></i></p>
             <p style="margin-top: 10px;">
                 <a href="index.html" style="color: #667eea; text-decoration: none; margin: 0 10px;">
-                    <i class="fas fa-home"></i> Home
+                    <i class="fas fa-home"></i> <span data-lang="home">Home</span>
                 </a>
                 <a href="pages/about.html" style="color: #667eea; text-decoration: none; margin: 0 10px;">
-                    <i class="fas fa-user"></i> About Me
+                    <i class="fas fa-user"></i> <span data-lang="about">About Me</span>
                 </a>
                 <a href="pages/contact.html" style="color: #667eea; text-decoration: none; margin: 0 10px;">
-                    <i class="fas fa-envelope"></i> Contact
+                    <i class="fas fa-envelope"></i> <span data-lang="contact">Contact</span>
                 </a>
             </p>
-            <p style="margin-top: 15px; font-size: 0.9em; opacity: 0.6;" id="today"></p>
+            <p style="margin-top: 15px; font-size: 0.9em; opacity: 0.6;" data-lang="today"></p>
         </div>
     </footer>
 
+    <script src="languages.js"></script>
     <script src="script.js"></script>
     
     <!-- Home page specific JavaScript -->
@@ -398,18 +421,28 @@
             if (dynamicButtons) {
                 dynamicButtons.innerHTML = `
                     <button onclick="showWelcomeMessage()" class="hero-btn primary" style="margin: 10px;">
-                        <i class="fas fa-hand-wave"></i> Welcome
+                        <i class="fas fa-hand-wave"></i> <span data-lang="welcomeBtn">Welcome</span>
                     </button>
                     <button onclick="changeTheme()" class="hero-btn secondary" style="margin: 10px;">
-                        <i class="fas fa-palette"></i> Change Color
+                        <i class="fas fa-palette"></i> <span data-lang="changeColor">Change Color</span>
                     </button>
                 `;
+                
+                // Update buttons text with current language
+                const langData = languageData[currentLanguage];
+                if (langData) {
+                    const welcomeBtn = dynamicButtons.querySelector('button:first-child span');
+                    const changeColorBtn = dynamicButtons.querySelector('button:last-child span');
+                    if (welcomeBtn && langData.welcomeBtn) welcomeBtn.textContent = langData.welcomeBtn;
+                    if (changeColorBtn && langData.changeColor) changeColorBtn.textContent = langData.changeColor;
+                }
             }
         }, 100);
         
         // Additional functions
         function showWelcomeMessage() {
-            alert(`🚀 Welcome to My Personal Website!\n\nThis is my first website that I built myself. I'm learning and developing my skills in web design and development`);
+            const langData = languageData[currentLanguage];
+            alert(`🚀 ${langData.welcomeTitle}\n\n${langData.welcomeSubtitle}`);
         }
         
         function changeTheme() {

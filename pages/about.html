@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>About Me - My Personal Website</title>
+    <title data-lang="aboutTitle">About Me - My Personal Website</title>
     <link rel="stylesheet" href="../style.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <style>
@@ -58,19 +58,41 @@
     <nav>
         <div class="nav-container">
             <a href="../index.html" class="logo">
-                <i class="fas fa-code"></i> My Personal Website
+                <i class="fas fa-code"></i> <span data-lang="footerTitle">My Personal Website</span>
             </a>
             
             <div class="nav-links">
                 <a href="../index.html">
-                    <i class="fas fa-home"></i> Home
+                    <i class="fas fa-home"></i> <span data-lang="home">Home</span>
                 </a>
                 <a href="about.html" class="active">
-                    <i class="fas fa-user"></i> About Me
+                    <i class="fas fa-user"></i> <span data-lang="about">About Me</span>
                 </a>
                 <a href="contact.html">
-                    <i class="fas fa-envelope"></i> Contact
+                    <i class="fas fa-envelope"></i> <span data-lang="contact">Contact</span>
                 </a>
+                
+                <!-- Language Switcher -->
+                <div class="nav-language" id="navLanguage">
+                    <button class="lang-toggle" onclick="toggleLanguageDropdown()">
+                        <div class="lang-current">
+                            <span class="lang-flag" id="currentFlag">🇺🇸</span>
+                            <span class="lang-name" id="currentLang">English</span>
+                        </div>
+                        <span class="lang-arrow">▼</span>
+                    </button>
+                    
+                    <div class="lang-dropdown">
+                        <button class="lang-option" onclick="changeLanguage('en')">
+                            <span class="lang-flag">🇺🇸</span>
+                            <span class="lang-text">English</span>
+                        </button>
+                        <button class="lang-option" onclick="changeLanguage('ar')">
+                            <span class="lang-flag">🇸🇦</span>
+                            <span class="lang-text">العربية</span>
+                        </button>
+                    </div>
+                </div>
             </div>
         </div>
     </nav>
@@ -78,68 +100,67 @@
     <div class="content">
         <div class="profile">
             <div style="font-size: 80px; margin-bottom: 20px;">👨‍💻</div>
-            <h1>About Me</h1>
-            <p>Hello! I'm a beginner web developer learning and improving my skills</p>
+            <h1 data-lang="whoAmI">About Me</h1>
+            <p data-lang="greeting">Hello! I'm a beginner web developer learning and improving my skills</p>
         </div>
         
         <div class="section">
-            <h2>📚 About Me</h2>
-            <p>
+            <h2 data-lang="aboutMe">📚 About Me</h2>
+            <p data-lang="passion">
                 I'm passionate about web technology and self-learning. I started my programming journey recently and I'm working on developing my skills in:
             </p>
             
             <div class="skills">
-                <span class="skill-tag">HTML</span>
-                <span class="skill-tag">CSS</span>
-                <span class="skill-tag">JavaScript</span>
-                <span class="skill-tag">VS Code</span>
-                <span class="skill-tag">Git</span>
-                <span class="skill-tag">Node.js</span>
+                <span class="skill-tag" data-lang="html">HTML</span>
+                <span class="skill-tag" data-lang="css">CSS</span>
+                <span class="skill-tag" data-lang="javascript">JavaScript</span>
+                <span class="skill-tag" data-lang="vscode">VS Code</span>
+                <span class="skill-tag" data-lang="git">Git</span>
+                <span class="skill-tag" data-lang="nodejs">Node.js</span>
             </div>
         </div>
         
         <div class="section">
-            <h2>🎯 My Goals</h2>
+            <h2 data-lang="goals">🎯 My Goals</h2>
             <ul>
-                <li>Master web development basics</li>
-                <li>Build practical projects</li>
-                <li>Learn React.js</li>
-                <li>Create a portfolio</li>
-                <li>Contribute to open source projects</li>
+                <li data-lang="goal1">Master web development basics</li>
+                <li data-lang="goal2">Build practical projects</li>
+                <li data-lang="goal3">Learn React.js</li>
+                <li data-lang="goal4">Create a portfolio</li>
+                <li data-lang="goal5">Contribute to open source projects</li>
             </ul>
         </div>
         
         <div class="section">
-            <h2>📅 My Plan</h2>
+            <h2 data-lang="plan">📅 My Plan</h2>
             <div class="cards">
                 <div class="card">
-                    <h3>🎨 First Month</h3>
-                    <p>HTML, CSS basics</p>
-                    <p>Build personal website</p>
+                    <h3 data-lang="month1">🎨 First Month</h3>
+                    <p data-lang="month1Task1">HTML, CSS basics</p>
+                    <p data-lang="month1Task2">Build personal website</p>
                 </div>
                 <div class="card">
-                    <h3>⚡ Second Month</h3>
-                    <p>JavaScript basics</p>
-                    <p>Add interactivity to website</p>
+                    <h3 data-lang="month2">⚡ Second Month</h3>
+                    <p data-lang="month2Task1">JavaScript basics</p>
+                    <p data-lang="month2Task2">Add interactivity to website</p>
                 </div>
                 <div class="card">
-                    <h3>🚀 Third Month</h3>
-                    <p>Node.js basics</p>
-                    <p>Build simple applications</p>
+                    <h3 data-lang="month3">🚀 Third Month</h3>
+                    <p data-lang="month3Task1">Node.js basics</p>
+                    <p data-lang="month3Task2">Build simple applications</p>
                 </div>
             </div>
         </div>
     </div>
     
     <footer>
-        <p>© 2024 My Personal Website | All rights reserved</p>
+        <p data-lang="allRightsReserved">© 2024 My Personal Website | All rights reserved</p>
         <p style="margin-top: 10px;">
-            <a href="../index.html" style="color: #3498db; text-decoration: none;">
-                ← Back to Home
-            </a>
+            <a href="../index.html" style="color: #3498db; text-decoration: none;" data-lang="backToHome">← Back to Home</a>
         </p>
     </footer>
     
+    <script src="../languages.js"></script>
     <script src="../script.js"></script>
 </body>
 </html>

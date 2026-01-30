@@ -1,6 +1,122 @@
-// script.js - Main JavaScript for website functionality
+// script.js - COMPLETE with language switcher
 console.log('🎉 My Personal Website - Ready!');
 console.log('✨ All files loaded successfully');
+
+// ===== LANGUAGE SYSTEM =====
+let currentLanguage = localStorage.getItem('selectedLanguage') || 'en';
+
+// Function to update all text content
+function updatePageContent() {
+    const langData = languageData[currentLanguage];
+    if (!langData) return;
+    
+    // Update elements with data-lang attribute
+    document.querySelectorAll('[data-lang]').forEach(element => {
+        const key = element.getAttribute('data-lang');
+        if (langData[key]) {
+            if (element.tagName === 'INPUT' || element.tagName === 'TEXTAREA') {
+                element.placeholder = langData[key];
+            } else if (element.tagName === 'OPTION') {
+                element.textContent = langData[key];
+            } else if (element.hasAttribute('title')) {
+                element.title = langData[key];
+            } else {
+                element.textContent = langData[key];
+            }
+        }
+    });
+    
+    // Update page title based on current page
+    const pageName = document.body.id || 'home';
+    if (langData[`${pageName}Title`]) {
+        document.title = langData[`${pageName}Title`];
+    }
+    
+    // Update date display if exists
+    updateDateTime();
+    
+    // Update direction based on language
+    updateDirection();
+}
+
+// Update direction (LTR for English, RTL for Arabic)
+function updateDirection() {
+    if (currentLanguage === 'ar') {
+        document.documentElement.dir = 'rtl';
+        document.documentElement.lang = 'ar';
+        document.body.style.direction = 'rtl';
+        document.body.style.textAlign = 'right';
+    } else {
+        document.documentElement.dir = 'ltr';
+        document.documentElement.lang = 'en';
+        document.body.style.direction = 'ltr';
+        document.body.style.textAlign = 'left';
+    }
+}
+
+// Update language switcher display
+function updateNavLanguageSwitcher() {
+    const currentFlag = document.getElementById('currentFlag');
+    const currentLang = document.getElementById('currentLang');
+    
+    if (currentFlag) {
+        currentFlag.textContent = currentLanguage === 'ar' ? '🇸🇦' : '🇺🇸';
+    }
+    
+    if (currentLang) {
+        currentLang.textContent = currentLanguage === 'ar' ? 'العربية' : 'English';
+    }
+    
+    // Update active state in dropdown
+    document.querySelectorAll('.lang-option').forEach(option => {
+        const lang = option.onclick.toString().includes("'ar'") ? 'ar' : 'en';
+        option.classList.toggle('active', lang === currentLanguage);
+    });
+}
+
+// MAIN LANGUAGE CHANGE FUNCTION
+function changeLanguage(lang) {
+    currentLanguage = lang;
+    localStorage.setItem('selectedLanguage', lang);
+    
+    // Close dropdown
+    const navLanguage = document.getElementById('navLanguage');
+    if (navLanguage) navLanguage.classList.remove('open');
+    
+    // Update all content
+    updatePageContent();
+    updateNavLanguageSwitcher();
+    
+    console.log(`🌍 Language changed to: ${lang}`);
+}
+
+// Toggle language dropdown
+function toggleLanguageDropdown() {
+    const navLanguage = document.getElementById('navLanguage');
+    if (navLanguage) {
+        navLanguage.classList.toggle('open');
+    }
+}
+
+// Close dropdown when clicking outside
+function setupDropdownClose() {
+    document.addEventListener('click', function(event) {
+        const navLanguage = document.getElementById('navLanguage');
+        if (navLanguage && !navLanguage.contains(event.target)) {
+            navLanguage.classList.remove('open');
+        }
+    });
+}
+
+// Initialize language system
+function initLanguageSystem() {
+    updatePageContent();
+    updateNavLanguageSwitcher();
+    updateDirection();
+    setupDropdownClose();
+    
+    console.log(`🌍 Language initialized: ${currentLanguage}`);
+}
 
 // ===== GENERAL WEBSITE FUNCTIONS =====
 // Track mouse movement
@@ -18,22 +134,39 @@ document.addEventListener('mousemove', function(e) {
 // Update date and time
 function updateDateTime() {
     const now = new Date();
+    const langData = languageData[currentLanguage];
     
-    // Format time
-    const timeStr = now.toLocaleTimeString('en-US', {
-        hour: '2-digit',
-        minute: '2-digit',
-        second: '2-digit',
-        hour12: false
-    });
+    // Format time based on language
+    let timeStr;
+    if (currentLanguage === 'ar') {
+        timeStr = now.toLocaleTimeString('ar-SA', {
+            hour: '2-digit',
+            minute: '2-digit',
+            second: '2-digit'
+        });
+    } else {
+        timeStr = now.toLocaleTimeString('en-US', {
+            hour: '2-digit',
+            minute: '2-digit',
+            second: '2-digit',
+            hour12: false
+        });
+    }
     
-    // Format date
-    const dateStr = now.toLocaleDateString('en-US', { 
+    // Format date based on language
+    let dateStr;
+    const dateOptions = { 
         weekday: 'long', 
         year: 'numeric', 
         month: 'long', 
         day: 'numeric' 
-    });
+    };
+    
+    if (currentLanguage === 'ar') {
+        dateStr = now.toLocaleDateString('ar-SA', dateOptions);
+    } else {
+        dateStr = now.toLocaleDateString('en-US', dateOptions);
+    }
     
     // Update elements if they exist
     const currentTime = document.getElementById('current-time');
@@ -42,17 +175,20 @@ function updateDateTime() {
     
     if (currentTime) currentTime.textContent = timeStr;
     if (currentDate) currentDate.textContent = dateStr;
-    if (systemTime) systemTime.innerHTML = `<i class="far fa-clock"></i> Time: ${timeStr}`;
+    if (systemTime) systemTime.innerHTML = `<i class="far fa-clock"></i> ${langData.systemTime || 'Time:'} ${timeStr}`;
     
     // Update today's date in footer
-    const todayElement = document.getElementById('today');
-    if (todayElement) {
-        todayElement.textContent = 'Today: ' + dateStr;
+    const todayElement = document.querySelector('[data-lang="today"]');
+    if (todayElement && langData.today) {
+        todayElement.textContent = langData.today + dateStr;
     }
 }
 
 // Initialize when DOM is loaded
 document.addEventListener('DOMContentLoaded', function() {
+    // Initialize language system
+    initLanguageSystem();
+    
     // Update date and time
     updateDateTime();
     setInterval(updateDateTime, 1000);
@@ -109,25 +245,20 @@ function changeTitle(newTitle) {
 window.siteFunctions = {
     showAlert,
     changeTitle,
-    getVisitCount: () => localStorage.getItem('visitCount') || 0
+    getVisitCount: () => localStorage.getItem('visitCount') || 0,
+    getCurrentLanguage: () => currentLanguage,
+    changeLanguage
 };
 
 // Load completion message
 window.addEventListener('load', function() {
     console.log('✅ Website fully loaded');
     console.log('💡 Try in console: siteFunctions.showAlert("Hello!")');
+    console.log('🌍 Current language:', currentLanguage);
 });
 
 // Utility function to validate email
 function validateEmail(email) {
     const re = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
     return re.test(email);
-}
-
-// Function to create loading spinner
-function createSpinner() {
-    const spinner = document.createElement('div');
-    spinner.className = 'loading-spinner';
-    spinner.innerHTML = '<i class="fas fa-spinner"></i>';
-    return spinner;
 }

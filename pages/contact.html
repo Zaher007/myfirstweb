@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Contact Me - Integrated Sending System</title>
+    <title data-lang="contactTitle">Contact Me - Integrated Sending System</title>
     <link rel="stylesheet" href="../style.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <style>
@@ -355,6 +355,17 @@
             0% { transform: rotate(0deg); }
             100% { transform: rotate(360deg); }
         }
+        
+        /* Language specific adjustments */
+        [dir="rtl"] .form-container::before {
+            left: auto;
+            right: 0;
+            background: linear-gradient(to left, var(--primary), var(--telegram));
+        }
+        
+        [dir="rtl"] .form-label {
+            text-align: right;
+        }
     </style>
 </head>
 <body id="contact">
@@ -362,16 +373,38 @@
     <nav>
         <div class="nav-container">
             <a href="../index.html" class="logo">
-                <i class="fas fa-robot"></i> Integrated Sending System
+                <i class="fas fa-robot"></i> <span data-lang="integratedSendingSystem">Integrated Sending System</span>
             </a>
             
             <div class="nav-links">
                 <a href="../index.html">
-                    <i class="fas fa-home"></i> Home
+                    <i class="fas fa-home"></i> <span data-lang="home">Home</span>
                 </a>
                 <a href="contact.html" class="active">
-                    <i class="fas fa-paper-plane"></i> Send Messages
+                    <i class="fas fa-paper-plane"></i> <span data-lang="sendMessages">Send Messages</span>
                 </a>
+                
+                <!-- Language Switcher -->
+                <div class="nav-language" id="navLanguage">
+                    <button class="lang-toggle" onclick="toggleLanguageDropdown()">
+                        <div class="lang-current">
+                            <span class="lang-flag" id="currentFlag">🇺🇸</span>
+                            <span class="lang-name" id="currentLang">English</span>
+                        </div>
+                        <span class="lang-arrow">▼</span>
+                    </button>
+                    
+                    <div class="lang-dropdown">
+                        <button class="lang-option" onclick="changeLanguage('en')">
+                            <span class="lang-flag">🇺🇸</span>
+                            <span class="lang-text">English</span>
+                        </button>
+                        <button class="lang-option" onclick="changeLanguage('ar')">
+                            <span class="lang-flag">🇸🇦</span>
+                            <span class="lang-text">العربية</span>
+                        </button>
+                    </div>
+                </div>
             </div>
         </div>
     </nav>
@@ -379,31 +412,31 @@
     <!-- Hero Section -->
     <section class="hero-section">
         <div style="max-width: 800px; margin: 0 auto;">
-            <h1>
+            <h1 data-lang="smartSendingSystem">
                 <i class="fas fa-envelope-open-text"></i> Smart Sending System
             </h1>
-            <p style="font-size: 1.2rem; opacity: 0.9; margin-bottom: 30px;">
+            <p style="font-size: 1.2rem; opacity: 0.9; margin-bottom: 30px;" data-lang="sendOnceMessage">
                 Send your message once, it reaches both email and Telegram!
             </p>
             
             <div class="services">
                 <div class="service-item email">
                     <i class="fas fa-envelope"></i>
-                    <h3>Email</h3>
-                    <p>Direct sending via Formspree</p>
+                    <h3 data-lang="email">Email</h3>
+                    <p data-lang="emailDescription">Direct sending via Formspree</p>
                 </div>
                 
                 <div class="service-item telegram">
                     <i class="fab fa-telegram-plane"></i>
-                    <h3>Telegram Bot</h3>
-                    <p>Instant notification on Telegram</p>
+                    <h3 data-lang="telegramBot">Telegram Bot</h3>
+                    <p data-lang="telegramDescription">Instant notification on Telegram</p>
                 </div>
             </div>
             
             <!-- Bot Status Display -->
             <div class="bot-status" id="botStatus">
                 <i class="fab fa-telegram"></i>
-                <span id="botStatusText">Checking bot status...</span>
+                <span id="botStatusText" data-lang="checkingBotStatus">Checking bot status...</span>
             </div>
         </div>
     </section>
@@ -413,25 +446,25 @@
         <div class="progress-steps">
             <div class="step active" id="step1">
                 <div class="step-icon">1</div>
-                <div>Write Message</div>
+                <div data-lang="step1">Write Message</div>
             </div>
             <div class="step" id="step2">
                 <div class="step-icon">2</div>
-                <div>Send Data</div>
+                <div data-lang="step2">Send Data</div>
             </div>
             <div class="step" id="step3">
                 <div class="step-icon">3</div>
-                <div>Confirm Sending</div>
+                <div data-lang="step3">Confirm Sending</div>
             </div>
         </div>
     </div>
 
     <!-- Main Form -->
     <div class="form-container">
-        <h2 style="color: #333; margin-bottom: 10px; text-align: center;">
+        <h2 style="color: #333; margin-bottom: 10px; text-align: center;" data-lang="integratedSendingForm">
             <i class="fas fa-comment-alt"></i> Integrated Sending Form
         </h2>
-        <p style="color: #666; text-align: center; margin-bottom: 30px;">
+        <p style="color: #666; text-align: center; margin-bottom: 30px;" data-lang="formDescription">
             Fill out the form and send. Your message will reach both my email and Telegram immediately
         </p>
 
@@ -444,19 +477,19 @@
             <div class="form-group">
                 <label class="form-label">
                     <i class="fas fa-user-circle"></i>
-                    <span>Full Name</span>
+                    <span data-lang="fullName">Full Name</span>
                 </label>
                 <input type="text" id="fullName" name="name" class="form-input" 
-                       placeholder="Enter your full name" required>
+                       data-lang="namePlaceholder" placeholder="Enter your full name" required>
             </div>
 
             <div class="form-group">
                 <label class="form-label">
                     <i class="fas fa-envelope"></i>
-                    <span>Email Address</span>
+                    <span data-lang="emailAddress">Email Address</span>
                 </label>
                 <input type="email" id="userEmail" name="email" class="form-input" 
-                       placeholder="example@email.com" required>
+                       data-lang="emailPlaceholder" placeholder="example@email.com" required>
             </div>
 
             <!-- Contact Details -->
@@ -464,24 +497,24 @@
                 <div class="form-group">
                     <label class="form-label">
                         <i class="fas fa-phone"></i>
-                        <span>Phone Number</span>
+                        <span data-lang="phoneNumber">Phone Number</span>
                     </label>
                     <input type="tel" id="phoneNumber" name="phone" class="form-input" 
-                           placeholder="05XXXXXXXX">
+                           data-lang="phonePlaceholder" placeholder="05XXXXXXXX">
                 </div>
 
                 <div class="form-group">
                     <label class="form-label">
                         <i class="fas fa-tag"></i>
-                        <span>Message Type</span>
+                        <span data-lang="messageType">Message Type</span>
                     </label>
                     <select id="messageType" name="type" class="form-input" required>
-                        <option value="">Select message type</option>
-                        <option value="Inquiry">Inquiry</option>
-                        <option value="Collaboration">Collaboration Request</option>
-                        <option value="Interview">Job Interview</option>
-                        <option value="Complaint">Complaint or Suggestion</option>
-                        <option value="Other">Other</option>
+                        <option value="" data-lang="selectMessageType">Select message type</option>
+                        <option value="Inquiry" data-lang="inquiry">Inquiry</option>
+                        <option value="Collaboration" data-lang="collaboration">Collaboration Request</option>
+                        <option value="Interview" data-lang="interview">Job Interview</option>
+                        <option value="Complaint" data-lang="complaint">Complaint or Suggestion</option>
+                        <option value="Other" data-lang="other">Other</option>
                     </select>
                 </div>
             </div>
@@ -490,10 +523,10 @@
             <div class="form-group">
                 <label class="form-label">
                     <i class="fas fa-comment-dots"></i>
-                    <span>Message</span>
+                    <span data-lang="message">Message</span>
                 </label>
                 <textarea id="userMessage" name="message" class="form-input" 
-                          placeholder="Write your message in detail here..." required></textarea>
+                          data-lang="messagePlaceholder" placeholder="Write your message in detail here..." required></textarea>
             </div>
 
             <!-- Hidden Fields for Formspree -->
@@ -503,13 +536,13 @@
             <!-- Submit Button -->
             <button type="submit" class="submit-btn" id="submitButton">
                 <i class="fas fa-paper-plane"></i>
-                <span>Send Message</span>
+                <span data-lang="sendMessage">Send Message</span>
             </button>
         </form>
 
         <!-- Results Panel -->
         <div class="results-panel" id="resultsPanel">
-            <h3 style="margin-bottom: 20px; color: #333;">
+            <h3 style="margin-bottom: 20px; color: #333;" data-lang="sendingResults">
                 <i class="fas fa-list-check"></i> Sending Results
             </h3>
             
@@ -518,8 +551,8 @@
                     <i class="fas fa-envelope" style="color: var(--email); font-size: 1.5rem;"></i>
                 </div>
                 <div>
-                    <strong>Email:</strong>
-                    <div id="emailStatusText">Waiting for sending...</div>
+                    <strong data-lang="emailStatus">Email:</strong>
+                    <div id="emailStatusText" data-lang="waitingForSending">Waiting for sending...</div>
                 </div>
             </div>
             
@@ -528,8 +561,8 @@
                     <i class="fab fa-telegram-plane" style="color: var(--telegram); font-size: 1.5rem;"></i>
                 </div>
                 <div>
-                    <strong>Telegram Bot:</strong>
-                    <div id="telegramStatusText">Waiting for sending...</div>
+                    <strong data-lang="telegramStatus">Telegram Bot:</strong>
+                    <div id="telegramStatusText" data-lang="waitingForSending">Waiting for sending...</div>
                 </div>
             </div>
         </div>
@@ -537,9 +570,9 @@
         <!-- Test Button -->
         <div style="text-align: center; margin-top: 30px;">
             <button onclick="sendTestMessage()" class="test-btn">
-                <i class="fas fa-vial"></i> <span>Test System</span>
+                <i class="fas fa-vial"></i> <span data-lang="testMessage">Test System</span>
             </button>
-            <p style="color: #666; font-size: 0.9em; margin-top: 10px;">
+            <p style="color: #666; font-size: 0.9em; margin-top: 10px;" data-lang="testMessageDesc">
                 Send a test message to verify system operation
             </p>
         </div>
@@ -548,7 +581,7 @@
     <!-- Footer -->
     <footer>
         <div style="max-width: 1200px; margin: 0 auto;">
-            <h3 style="margin-bottom: 15px;">
+            <h3 style="margin-bottom: 15px;" data-lang="integratedSendingSystem">
                 <i class="fas fa-robot"></i> Integrated Sending System
             </h3>
             
@@ -557,14 +590,14 @@
                     <div style="color: var(--email); font-size: 2rem; margin-bottom: 10px;">
                         <i class="fas fa-envelope"></i>
                     </div>
-                    <div>Formspree API</div>
+                    <div data-lang="formspreeAPI">Formspree API</div>
                 </div>
                 
                 <div style="text-align: center;">
                     <div style="color: var(--telegram); font-size: 2rem; margin-bottom: 10px;">
                         <i class="fab fa-telegram-plane"></i>
                     </div>
-                    <div>Telegram Bot API</div>
+                    <div data-lang="telegramAPI">Telegram Bot API</div>
                 </div>
             </div>
             
@@ -572,16 +605,18 @@
                 <p id="systemTime" style="color: #667eea; font-weight: bold; font-size: 1.1rem;"></p>
                 <p id="systemStatus" style="opacity: 0.8;">
                     <span id="systemIcon"><i class="fas fa-circle" style="color: var(--success);"></i></span>
-                    <span id="systemText">System ready for sending</span>
+                    <span id="systemText" data-lang="systemReady">System ready for sending</span>
                 </p>
             </div>
             
-            <p style="opacity: 0.7; margin-top: 30px; padding-top: 20px; border-top: 1px solid rgba(255,255,255,0.1);">
+            <p style="opacity: 0.7; margin-top: 30px; padding-top: 20px; border-top: 1px solid rgba(255,255,255,0.1);"
+               data-lang="footerRights">
                 © 2024 Integrated Sending System | All rights reserved
             </p>
         </div>
     </footer>
 
+    <script src="../languages.js"></script>
     <script src="../script.js"></script>
     
     <!-- Contact Form JavaScript -->
@@ -606,6 +641,7 @@
         // ========== INITIALIZATION ==========
         document.addEventListener('DOMContentLoaded', async function() {
             console.log('🚀 Integrated Sending System - Loaded');
+            console.log('🌍 Current language:', currentLanguage);
             
             // Set up auto-reply email
             const userEmailInput = document.getElementById('userEmail');
@@ -622,13 +658,17 @@
             
             // Test Telegram connection
             await testTelegramConnection();
+            
+            // Update form placeholders based on language
+            updateContactFormPlaceholders();
         });
 
         // ========== TELEGRAM FUNCTIONS ==========
         async function checkBotStatus() {
             try {
+                const langData = languageData[currentLanguage];
                 if (botStatusText) {
-                    botStatusText.innerHTML = `<i class="fas fa-spinner loading-spinner"></i> Checking bot...`;
+                    botStatusText.innerHTML = `<i class="fas fa-spinner loading-spinner"></i> ${langData.checkingBot}`;
                 }
                 
                 const response = await fetch(
@@ -639,7 +679,7 @@
                 
                 if (data.ok && botStatusText) {
                     botStatusText.innerHTML = 
-                        `<i class="fas fa-check-circle" style="color: var(--success);"></i> Bot active: @${data.result.username}`;
+                        `<i class="fas fa-check-circle" style="color: var(--success);"></i> ${langData.botActive} @${data.result.username}`;
                     if (botStatus) {
                         botStatus.style.background = 'rgba(40, 167, 69, 0.1)';
                         botStatus.style.borderColor = 'var(--success)';
@@ -650,7 +690,7 @@
                 } else {
                     if (botStatusText) {
                         botStatusText.innerHTML = 
-                            `<i class="fas fa-times-circle" style="color: var(--danger);"></i> Bot error: ${data.description}`;
+                            `<i class="fas fa-times-circle" style="color: var(--danger);"></i> ${langData.botError} ${data.description}`;
                     }
                     if (botStatus) {
                         botStatus.style.background = 'rgba(220, 53, 69, 0.1)';
@@ -659,9 +699,10 @@
                     return false;
                 }
             } catch (error) {
+                const langData = languageData[currentLanguage];
                 if (botStatusText) {
                     botStatusText.innerHTML = 
-                        `<i class="fas fa-exclamation-triangle" style="color: var(--warning);"></i> Connection error with bot`;
+                        `<i class="fas fa-exclamation-triangle" style="color: var(--warning);"></i> ${langData.connectionError}`;
                 }
                 console.error('❌ Network Error:', error);
                 return false;
@@ -695,18 +736,19 @@
             try {
                 console.log('📱 Sending to Telegram...');
                 
+                const langData = languageData[currentLanguage];
                 // Format the message
                 const message = `
-📬 *Smart Sending System* 
+📬 *${langData.smartSendingSystem}* 
 
-👤 *Full Name:* ${formData.name}
-📧 *Email Address:* ${formData.email}
-📞 *Phone Number:* ${formData.phone || 'Not provided'}
-🏷️ *Message Type:* ${formData.type}
-💬 *Message:*
+👤 *${langData.fullName}:* ${formData.name}
+📧 *${langData.emailAddress}:* ${formData.email}
+📞 *${langData.phoneNumber}:* ${formData.phone || langData.other}
+🏷️ *${langData.messageType}:* ${formData.type}
+💬 *${langData.message}:*
 ${formData.message}
 
-🕐 *System Time:* ${new Date().toLocaleString('en-US')}
+🕐 *${langData.systemTime}:* ${new Date().toLocaleString(currentLanguage === 'ar' ? 'ar-SA' : 'en-US')}
                 `;
                 
                 // URL encode
@@ -725,19 +767,20 @@ ${formData.message}
                 
                 if (result.ok) {
                     console.log('✅ Successfully sent to Telegram');
-                    return { success: true, message: "Sent successfully" };
+                    return { success: true, message: langData.sentSuccessfully };
                 } else {
                     console.error('❌ Telegram error:', result);
                     return { 
                         success: false, 
-                        message: `Sending failed: ${result.description || "Connection error"}` 
+                        message: `${langData.sendingFailed}: ${result.description || langData.connectionError}` 
                     };
                 }
             } catch (error) {
                 console.error('❌ Network error:', error);
+                const langData = languageData[currentLanguage];
                 return { 
                     success: false, 
-                    message: "Connection error" 
+                    message: langData.connectionError 
                 };
             }
         }
@@ -764,15 +807,18 @@ ${formData.message}
 
                 if (response.ok) {
                     console.log('✅ Successfully sent to Formspree');
-                    return { success: true, message: "Sent successfully" };
+                    const langData = languageData[currentLanguage];
+                    return { success: true, message: langData.sentSuccessfully };
                 } else {
                     const error = await response.json();
                     console.error('❌ Formspree error:', error);
-                    return { success: false, message: "Sending failed" };
+                    const langData = languageData[currentLanguage];
+                    return { success: false, message: langData.sendingFailed };
                 }
             } catch (error) {
                 console.error('❌ Formspree network error:', error);
-                return { success: false, message: "Connection error" };
+                const langData = languageData[currentLanguage];
+                return { success: false, message: langData.connectionError };
             }
         }
 
@@ -799,7 +845,8 @@ ${formData.message}
                 updateStep(2);
                 if (submitButton) {
                     submitButton.disabled = true;
-                    submitButton.innerHTML = `<i class="fas fa-spinner loading-spinner"></i> Sending...`;
+                    const langData = languageData[currentLanguage];
+                    submitButton.innerHTML = `<i class="fas fa-spinner loading-spinner"></i> ${langData.sending}`;
                 }
                 
                 // Show results panel
@@ -807,10 +854,12 @@ ${formData.message}
                     resultsPanel.style.display = 'block';
                 }
                 if (emailStatusText) {
-                    emailStatusText.textContent = 'Waiting for sending...';
+                    const langData = languageData[currentLanguage];
+                    emailStatusText.textContent = langData.waitingForSending;
                 }
                 if (telegramStatusText) {
-                    telegramStatusText.textContent = 'Waiting for sending...';
+                    const langData = languageData[currentLanguage];
+                    telegramStatusText.textContent = langData.waitingForSending;
                 }
 
                 // Reset results
@@ -828,23 +877,25 @@ ${formData.message}
                 const telegramSuccess = telegramResultData.status === 'fulfilled' && telegramResultData.value.success;
 
                 // Update UI with results
+                const langData = languageData[currentLanguage];
+                
                 if (emailResult && emailStatusText) {
                     if (emailSuccess) {
                         emailResult.classList.add('success');
-                        emailStatusText.innerHTML = `<i class="fas fa-check-circle" style="color: var(--success);"></i> Sent successfully`;
+                        emailStatusText.innerHTML = `<i class="fas fa-check-circle" style="color: var(--success);"></i> ${langData.sentSuccessfully}`;
                     } else {
                         emailResult.classList.add('error');
-                        emailStatusText.innerHTML = `<i class="fas fa-times-circle" style="color: var(--danger);"></i> Sending failed`;
+                        emailStatusText.innerHTML = `<i class="fas fa-times-circle" style="color: var(--danger);"></i> ${langData.sendingFailed}`;
                     }
                 }
 
                 if (telegramResult && telegramStatusText) {
                     if (telegramSuccess) {
                         telegramResult.classList.add('success');
-                        telegramStatusText.innerHTML = `<i class="fas fa-check-circle" style="color: var(--success);"></i> Sent successfully`;
+                        telegramStatusText.innerHTML = `<i class="fas fa-check-circle" style="color: var(--success);"></i> ${langData.sentSuccessfully}`;
                     } else {
                         telegramResult.classList.add('error');
-                        const errorMsg = telegramResultData.value?.message || 'Sending failed';
+                        const errorMsg = telegramResultData.value?.message || langData.sendingFailed;
                         telegramStatusText.innerHTML = `<i class="fas fa-times-circle" style="color: var(--danger);"></i> ${errorMsg}`;
                     }
                 }
@@ -853,13 +904,13 @@ ${formData.message}
                 if (emailSuccess || telegramSuccess) {
                     updateStep(3);
                     
-                    let successMessage = '✅ Your message has been received!';
+                    let successMessage = langData.messageReceived;
                     if (emailSuccess && telegramSuccess) {
-                        successMessage += ' Reached both email and Telegram';
+                        successMessage += ' ' + langData.receivedBoth;
                     } else if (emailSuccess) {
-                        successMessage += ' Reached email';
+                        successMessage += ' ' + langData.receivedEmail;
                     } else if (telegramSuccess) {
-                        successMessage += ' Reached Telegram';
+                        successMessage += ' ' + langData.receivedTelegram;
                     }
                     
                     showStatusMessage(successMessage, 'success');
@@ -871,26 +922,29 @@ ${formData.message}
                         updateStep(1);
                     }, 3000);
                 } else {
-                    showStatusMessage('❌ Failed to send message. Please try again.', 'error');
+                    showStatusMessage(langData.sendingFailedMessage, 'error');
                 }
 
                 // Reset button
                 if (submitButton) {
                     submitButton.disabled = false;
-                    submitButton.innerHTML = `<i class="fas fa-paper-plane"></i> Send Message`;
+                    const langData = languageData[currentLanguage];
+                    submitButton.innerHTML = `<i class="fas fa-paper-plane"></i> ${langData.sendMessage}`;
                 }
             });
         }
 
         // ========== HELPER FUNCTIONS ==========
         function validateForm(data) {
+            const langData = languageData[currentLanguage];
+            
             if (!data.name || !data.email || !data.type || !data.message) {
-                showStatusMessage('❌ Please fill all required fields', 'error');
+                showStatusMessage(langData.fillRequiredFields, 'error');
                 return false;
             }
 
             if (!validateEmail(data.email)) {
-                showStatusMessage('❌ Please enter a valid email address', 'error');
+                showStatusMessage(langData.validEmail, 'error');
                 return false;
             }
 
@@ -930,25 +984,64 @@ ${formData.message}
             }
         }
 
+        function updateContactFormPlaceholders() {
+            const langData = languageData[currentLanguage];
+            
+            // Update form inputs
+            const inputs = {
+                'fullName': document.getElementById('fullName'),
+                'userEmail': document.getElementById('userEmail'),
+                'phoneNumber': document.getElementById('phoneNumber'),
+                'userMessage': document.getElementById('userMessage')
+            };
+            
+            Object.entries(inputs).forEach(([id, element]) => {
+                if (element && langData[id + 'Placeholder']) {
+                    element.placeholder = langData[id + 'Placeholder'];
+                }
+            });
+            
+            // Update select options
+            const messageType = document.getElementById('messageType');
+            if (messageType && langData.selectMessageType) {
+                messageType.options[0].textContent = langData.selectMessageType;
+                for (let i = 1; i < messageType.options.length; i++) {
+                    const option = messageType.options[i];
+                    const value = option.value;
+                    if (langData[value]) {
+                        option.textContent = langData[value];
+                    }
+                }
+            }
+        }
+
         // ========== TEST FUNCTION ==========
         window.sendTestMessage = async function() {
             console.log('🧪 Sending test message...');
             
+            const langData = languageData[currentLanguage];
             const testData = {
-                name: 'Test System',
+                name: langData.testMessage,
                 email: 'test@example.com',
                 phone: '0512345678',
-                type: 'Test',
-                message: 'This is a test message to verify system operation'
+                type: langData.testMessage,
+                message: langData.testMessageDesc
             };
             
             const result = await sendToTelegram(testData);
             
             if (result.success) {
-                alert('✅ Test System Sent successfully');
+                alert('✅ ' + langData.testMessage + ' ' + langData.sentSuccessfully);
             } else {
                 alert(`❌ ${result.message}`);
             }
+        };
+
+        // Update contact form when language changes
+        const originalChangeLanguage = window.changeLanguage;
+        window.changeLanguage = function(lang) {
+            originalChangeLanguage(lang);
+            updateContactFormPlaceholders();
         };
     </script>
 </body>
