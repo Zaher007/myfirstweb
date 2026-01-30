@@ -1,18 +1,21 @@
 <!DOCTYPE html>
-<html lang="ar">
+<html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>موقعي الشخصي - الرئيسية</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>My Personal Website - Home</title>
     <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <style>
-        /* إضافات خاصة بالصفحة الرئيسية فقط */
+        /* Home page specific styles */
         .hero-section {
             background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
             color: white;
             text-align: center;
-            padding: 80px 20px;
+            padding: 100px 20px;
             margin-bottom: 50px;
             border-radius: 0 0 30px 30px;
+            transition: background 0.5s ease;
         }
         
         .hero-title {
@@ -33,6 +36,7 @@
             gap: 15px;
             justify-content: center;
             flex-wrap: wrap;
+            margin-top: 30px;
         }
         
         .hero-btn {
@@ -44,6 +48,9 @@
             display: inline-flex;
             align-items: center;
             gap: 8px;
+            cursor: pointer;
+            border: none;
+            font-size: 16px;
         }
         
         .hero-btn.primary {
@@ -163,7 +170,7 @@
             transform: scale(1.05);
         }
         
-        /* تصميم متجاوب */
+        /* Responsive */
         @media (max-width: 768px) {
             .hero-title {
                 font-size: 2em;
@@ -187,159 +194,174 @@
                 max-width: 250px;
                 justify-content: center;
             }
+            
+            .quick-links {
+                flex-direction: column;
+                align-items: center;
+            }
+            
+            .quick-link {
+                width: 100%;
+                max-width: 250px;
+                justify-content: center;
+            }
         }
     </style>
 </head>
-<body>
-    <!-- شريط التنقل -->
+<body id="home">
+    <!-- FIXED NAVIGATION -->
     <nav>
         <div class="nav-container">
             <a href="index.html" class="logo">
-                <i class="fas fa-code"></i> موقعي
+                <i class="fas fa-code"></i> My Personal Website
             </a>
+            
             <div class="nav-links">
                 <a href="index.html" class="active">
-                    <i class="fas fa-home"></i> الرئيسية
+                    <i class="fas fa-home"></i> Home
                 </a>
                 <a href="pages/about.html">
-                    <i class="fas fa-user"></i> من أنا
+                    <i class="fas fa-user"></i> About Me
                 </a>
                 <a href="pages/contact.html">
-                    <i class="fas fa-envelope"></i> اتصل بي
+                    <i class="fas fa-envelope"></i> Contact
                 </a>
             </div>
         </div>
     </nav>
 
-    <!-- قسم البطل -->
+    <!-- Hero Section -->
     <section class="hero-section">
-        <h1 class="hero-title">مرحباً بكم في موقعي الشخصي</h1>
+        <h1 class="hero-title">Welcome to My Personal Website</h1>
         <p class="hero-subtitle">
-            هذا هو موقعي الأول الذي بنيته بنفسي. أتعلم وأطور مهاراتي في تصميم وتطوير الويب
+            This is my first website that I built myself. I'm learning and developing my skills in web design and development
         </p>
         
-        <!-- صورة ترحيبية -->
+        <!-- Welcome Image -->
         <img src="https://images.unsplash.com/photo-1515879218367-8466d910aaa4?w=400&q=80" 
-             alt="ترحيب" 
+             alt="Welcome" 
              class="welcome-image"
-             onerror="this.src='data:image/svg+xml;utf8,<svg xmlns=\"http://www.w3.org/2000/svg\" width=\"400\" height=\"300\"><rect width=\"400\" height=\"300\" fill=\"%23667eea\"/><text x=\"200\" y=\"150\" font-family=\"Arial\" font-size=\"24\" fill=\"white\" text-anchor=\"middle\">مرحباً</text></svg>'">
+             onerror="this.src='data:image/svg+xml;utf8,<svg xmlns=\"http://www.w3.org/2000/svg\" width=\"400\" height=\"300\"><rect width=\"400\" height=\"300\" fill=\"%23667eea\"/><text x=\"200\" y=\"150\" font-family=\"Arial\" font-size=\"24\" fill=\"white\" text-anchor=\"middle\">Welcome</text></svg>'">
         
         <div class="hero-buttons">
             <a href="#features" class="hero-btn primary">
-                <i class="fas fa-star"></i> اكتشف المميزات
+                <i class="fas fa-star"></i> Discover Features
             </a>
             <a href="pages/about.html" class="hero-btn secondary">
-                <i class="fas fa-user"></i> تعرف علي
+                <i class="fas fa-user"></i> Get to Know Me
             </a>
         </div>
     </section>
 
-    <!-- المحتوى الرئيسي -->
+    <!-- Main Content -->
     <div class="content">
-        <!-- المميزات -->
+        <!-- Features -->
         <section id="features">
             <h2 style="text-align: center; color: #333; margin-bottom: 40px;">
-                <i class="fas fa-crown"></i> مميزات الموقع
+                <i class="fas fa-crown"></i> Website Features
             </h2>
             
             <div class="features">
                 <div class="feature-card">
                     <div class="feature-icon">🎨</div>
-                    <h3 class="feature-title">تصميم عصري</h3>
-                    <p>تصميم متجاوب يعمل على جميع الأجهزة بمظهر حديث وجذاب</p>
+                    <h3 class="feature-title">Modern Design</h3>
+                    <p>Responsive design that works on all devices with a modern and attractive look</p>
                 </div>
                 
                 <div class="feature-card">
                     <div class="feature-icon">⚡</div>
-                    <h3 class="feature-title">أداء سريع</h3>
-                    <p>تحميل سريع للأقسام والصور مع تحسين للأداء</p>
+                    <h3 class="feature-title">Fast Performance</h3>
+                    <p>Fast loading of sections and images with performance optimization</p>
                 </div>
                 
                 <div class="feature-card">
                     <div class="feature-icon">🔧</div>
-                    <h3 class="feature-title">سهل التعديل</h3>
-                    <p>كود نظيف وسهل التعديل والإضافة عليه</p>
+                    <h3 class="feature-title">Easy to Modify</h3>
+                    <p>Clean code that is easy to modify and add to</p>
                 </div>
                 
                 <div class="feature-card">
                     <div class="feature-icon">📱</div>
-                    <h3 class="feature-title">متحرك بالكامل</h3>
-                    <p>تفاعلات وتأثيرات تجعل الموقع حياً</p>
+                    <h3 class="feature-title">Fully Interactive</h3>
+                    <p>Interactions and effects that make the website alive</p>
                 </div>
             </div>
         </section>
 
-        <!-- إحصائيات -->
+        <!-- Statistics -->
         <section class="stats">
-            <h2 style="color: #333; margin-bottom: 30px;">📊 إحصائيات الموقع</h2>
+            <h2 style="color: #333; margin-bottom: 30px;">📊 Website Statistics</h2>
             <div class="stats-grid">
                 <div class="stat-item">
                     <span class="stat-number" id="visitors">0</span>
-                    <span class="stat-label">زائر</span>
+                    <span class="stat-label">Visitors</span>
                 </div>
                 <div class="stat-item">
                     <span class="stat-number" id="pages">3</span>
-                    <span class="stat-label">صفحة</span>
+                    <span class="stat-label">Pages</span>
                 </div>
                 <div class="stat-item">
                     <span class="stat-number" id="features-count">4</span>
-                    <span class="stat-label">ميزة</span>
+                    <span class="stat-label">Features</span>
                 </div>
                 <div class="stat-item">
                     <span class="stat-number" id="days">1</span>
-                    <span class="stat-label">يوم</span>
+                    <span class="stat-label">Days</span>
                 </div>
             </div>
         </section>
 
-        <!-- روابط سريعة -->
+        <!-- Quick Links -->
         <div class="quick-links">
             <a href="pages/about.html" class="quick-link">
-                <i class="fas fa-info-circle"></i> معلومات عني
+                <i class="fas fa-info-circle"></i> About Me Info
             </a>
             <a href="pages/contact.html" class="quick-link">
-                <i class="fas fa-comments"></i> تواصل معي
+                <i class="fas fa-comments"></i> Contact Me
             </a>
             <a href="https://github.com" target="_blank" class="quick-link">
-                <i class="fab fa-github"></i> مشاريعي
+                <i class="fab fa-github"></i> My Projects
             </a>
         </div>
 
-        <!-- آخر التحديثات -->
+        <!-- Latest Updates -->
         <section style="background: white; padding: 30px; border-radius: 15px; margin: 40px 0; border: 2px solid #667eea;">
             <h2 style="color: #667eea; margin-bottom: 20px;">
-                <i class="fas fa-sync-alt"></i> آخر التحديثات
+                <i class="fas fa-sync-alt"></i> Latest Updates
             </h2>
-            <ul style="list-style: none; padding-right: 20px;">
+            <ul style="list-style: none; padding-left: 20px;">
                 <li style="padding: 10px 0; border-bottom: 1px solid #eee;">
                     <i class="fas fa-check-circle" style="color: #28a745;"></i>
-                    تم إنشاء الموقع بالكامل
+                    <span>Website fully created</span>
                 </li>
                 <li style="padding: 10px 0; border-bottom: 1px solid #eee;">
                     <i class="fas fa-check-circle" style="color: #28a745;"></i>
-                    إضافة صفحات "من أنا" و "اتصل بي"
+                    <span>Added 'About Me' and 'Contact' pages</span>
                 </li>
                 <li style="padding: 10px 0; border-bottom: 1px solid #eee;">
                     <i class="fas fa-check-circle" style="color: #28a745;"></i>
-                    تصميم متجاوب لجميع الشاشات
+                    <span>Responsive design for all screens</span>
                 </li>
                 <li style="padding: 10px 0;">
                     <i class="fas fa-spinner" style="color: #ffc107;"></i>
-                    إضافة مدونة قريباً
+                    <span>Adding blog soon</span>
                 </li>
             </ul>
         </section>
+        
+        <!-- Dynamic buttons added by JavaScript -->
+        <div id="dynamic-buttons" style="text-align: center; margin: 30px 0;"></div>
     </div>
 
-    <!-- التذييل -->
+    <!-- Footer -->
     <footer>
         <div style="display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap;">
             <div>
                 <h3 style="color: white; margin-bottom: 10px;">
-                    <i class="fas fa-code"></i> موقعي الشخصي
+                    <i class="fas fa-code"></i> My Personal Website
                 </h3>
                 <p style="opacity: 0.8; font-size: 0.9em;">
-                    أول موقع لي - رحلة تعلم تطوير الويب
+                    My first website - A web development learning journey
                 </p>
             </div>
             
@@ -350,66 +372,71 @@
         </div>
         
         <div style="text-align: center; margin-top: 30px; padding-top: 20px; border-top: 1px solid rgba(255,255,255,0.1);">
-            <p style="opacity: 0.7;">© 2024 موقعي الشخصي | تم التطوير بـ <i class="fas fa-heart" style="color: #f72585;"></i></p>
+            <p style="opacity: 0.7;">© 2024 My Personal Website | Developed with <i class="fas fa-heart" style="color: #f72585;"></i></p>
             <p style="margin-top: 10px;">
                 <a href="index.html" style="color: #667eea; text-decoration: none; margin: 0 10px;">
-                    <i class="fas fa-home"></i> الرئيسية
+                    <i class="fas fa-home"></i> Home
                 </a>
                 <a href="pages/about.html" style="color: #667eea; text-decoration: none; margin: 0 10px;">
-                    <i class="fas fa-user"></i> من أنا
+                    <i class="fas fa-user"></i> About Me
                 </a>
                 <a href="pages/contact.html" style="color: #667eea; text-decoration: none; margin: 0 10px;">
-                    <i class="fas fa-envelope"></i> اتصل بي
+                    <i class="fas fa-envelope"></i> Contact
                 </a>
             </p>
+            <p style="margin-top: 15px; font-size: 0.9em; opacity: 0.6;" id="today"></p>
         </div>
     </footer>
 
-    <!-- الربط مع script.js الموجود لديك -->
     <script src="script.js"></script>
     
-    <!-- إضافات خاصة بالصفحة الرئيسية -->
+    <!-- Home page specific JavaScript -->
     <script>
-        // تحديث الإحصائيات
+        // Dynamic content after page loads
+        setTimeout(() => {
+            const dynamicButtons = document.getElementById('dynamic-buttons');
+            if (dynamicButtons) {
+                dynamicButtons.innerHTML = `
+                    <button onclick="showWelcomeMessage()" class="hero-btn primary" style="margin: 10px;">
+                        <i class="fas fa-hand-wave"></i> Welcome
+                    </button>
+                    <button onclick="changeTheme()" class="hero-btn secondary" style="margin: 10px;">
+                        <i class="fas fa-palette"></i> Change Color
+                    </button>
+                `;
+            }
+        }, 100);
+        
+        // Additional functions
+        function showWelcomeMessage() {
+            alert(`🚀 Welcome to My Personal Website!\n\nThis is my first website that I built myself. I'm learning and developing my skills in web design and development`);
+        }
+        
+        function changeTheme() {
+            const themes = [
+                'linear-gradient(135deg, #667eea 0%, #764ba2 100%)',
+                'linear-gradient(135deg, #f72585 0%, #7209b7 100%)',
+                'linear-gradient(135deg, #4361ee 0%, #3a0ca3 100%)',
+                'linear-gradient(135deg, #4cc9f0 0%, #4895ef 100%)',
+                'linear-gradient(135deg, #f8961e 0%, #f3722c 100%)',
+                'linear-gradient(135deg, #90be6d 0%, #43aa8b 100%)'
+            ];
+            
+            const randomTheme = themes[Math.floor(Math.random() * themes.length)];
+            document.querySelector('.hero-section').style.background = randomTheme;
+            
+            // Update button color to match theme
+            const primaryColor = randomTheme.includes('#667eea') ? '#667eea' : 
+                               randomTheme.includes('#f72585') ? '#f72585' :
+                               randomTheme.includes('#4361ee') ? '#4361ee' :
+                               randomTheme.includes('#4cc9f0') ? '#4cc9f0' :
+                               randomTheme.includes('#f8961e') ? '#f8961e' : '#90be6d';
+            
+            document.documentElement.style.setProperty('--primary', primaryColor);
+        }
+        
+        // Effects for cards
         document.addEventListener('DOMContentLoaded', function() {
-            // زيادة عدد الزوار
-            let visitors = localStorage.getItem('siteVisitors') || 0;
-            visitors++;
-            localStorage.setItem('siteVisitors', visitors);
-            document.getElementById('visitors').textContent = visitors;
-            
-            // حساب عدد الأيام
-            const startDate = localStorage.getItem('siteStartDate');
-            if (!startDate) {
-                localStorage.setItem('siteStartDate', new Date().toISOString());
-                document.getElementById('days').textContent = 1;
-            } else {
-                const start = new Date(startDate);
-                const today = new Date();
-                const diffTime = Math.abs(today - start);
-                const diffDays = Math.ceil(diffTime / (1000 * 60 * 60 * 24));
-                document.getElementById('days').textContent = diffDays;
-            }
-            
-            // تحديث الوقت والتاريخ
-            function updateDateTime() {
-                const now = new Date();
-                const timeStr = now.toLocaleTimeString('ar-EG');
-                const dateStr = now.toLocaleDateString('ar-EG', {
-                    weekday: 'long',
-                    year: 'numeric',
-                    month: 'long',
-                    day: 'numeric'
-                });
-                
-                document.getElementById('current-time').textContent = timeStr;
-                document.getElementById('current-date').textContent = dateStr;
-            }
-            
-            updateDateTime();
-            setInterval(updateDateTime, 1000);
-            
-            // تأثيرات للبطاقات
             const featureCards = document.querySelectorAll('.feature-card');
             featureCards.forEach(card => {
                 card.addEventListener('mouseenter', () => {
@@ -421,41 +448,9 @@
                 });
             });
             
-            // رسالة ترحيب في الكونسول
-            console.log('%c🎉 مرحباً في موقعي الشخصي!', 'color: #667eea; font-size: 16px; font-weight: bold;');
-            console.log('%c💻 تم تطويره بـ HTML, CSS, JavaScript', 'color: #764ba2;');
-            console.log(`%c👥 عدد الزوار: ${visitors}`, 'color: #28a745;');
-        });
-        
-        // وظائف إضافية
-        function showWelcome() {
-            alert('🚀 أهلاً بك في موقعي الشخصي!\n\nهذا هو أول موقع أقوم ببنائه. أتمنى أن يعجبك!');
-        }
-        
-        function changeTheme() {
-            const themes = ['#667eea', '#764ba2', '#f72585', '#4cc9f0', '#2a9d8f'];
-            const randomTheme = themes[Math.floor(Math.random() * themes.length)];
-            document.querySelector('.hero-section').style.background = 
-                `linear-gradient(135deg, ${randomTheme} 0%, ${randomTheme}99 100%)`;
-        }
-        
-        // إضافة الأزرار الديناميكية
-        document.addEventListener('DOMContentLoaded', function() {
-            const heroSection = document.querySelector('.hero-section');
-            if (heroSection) {
-                const extraButtons = document.createElement('div');
-                extraButtons.className = 'hero-buttons';
-                extraButtons.style.marginTop = '20px';
-                extraButtons.innerHTML = `
-                    <button onclick="showWelcome()" class="hero-btn primary" style="cursor: pointer;">
-                        <i class="fas fa-hand-wave"></i> ترحيب
-                    </button>
-                    <button onclick="changeTheme()" class="hero-btn secondary" style="cursor: pointer;">
-                        <i class="fas fa-palette"></i> تغيير اللون
-                    </button>
-                `;
-                heroSection.appendChild(extraButtons);
-            }
+            // Welcome message in console
+            console.log('%c🎉 Welcome to My Personal Website!', 'color: #667eea; font-size: 16px; font-weight: bold;');
+            console.log('%c💻 Developed with HTML, CSS, JavaScript', 'color: #764ba2;');
         });
     </script>
 </body>

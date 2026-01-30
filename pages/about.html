@@ -1,9 +1,11 @@
 <!DOCTYPE html>
-<html lang="ar">
+<html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>من أنا - موقعي الشخصي</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>About Me - My Personal Website</title>
     <link rel="stylesheet" href="../style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <style>
         .profile {
             text-align: center;
@@ -33,26 +35,58 @@
             padding: 8px 16px;
             border-radius: 20px;
             font-size: 0.9em;
+            transition: all 0.3s;
+            cursor: pointer;
+        }
+        
+        .skill-tag:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 5px 15px rgba(52, 152, 219, 0.3);
+        }
+        
+        /* Responsive */
+        @media (max-width: 768px) {
+            .profile-img {
+                width: 150px;
+                height: 150px;
+            }
         }
     </style>
 </head>
-<body>
+<body id="about">
+    <!-- FIXED NAVIGATION -->
     <nav>
-        <a href="../index.html">🏠 الرئيسية</a>
-        <a href="about.html">👤 من أنا</a>
-        <a href="contact.html">📞 اتصل بي</a>
+        <div class="nav-container">
+            <a href="../index.html" class="logo">
+                <i class="fas fa-code"></i> My Personal Website
+            </a>
+            
+            <div class="nav-links">
+                <a href="../index.html">
+                    <i class="fas fa-home"></i> Home
+                </a>
+                <a href="about.html" class="active">
+                    <i class="fas fa-user"></i> About Me
+                </a>
+                <a href="contact.html">
+                    <i class="fas fa-envelope"></i> Contact
+                </a>
+            </div>
+        </div>
     </nav>
     
     <div class="content">
         <div class="profile">
             <div style="font-size: 80px; margin-bottom: 20px;">👨‍💻</div>
-            <h1>من أنا</h1>
-            <p>مرحباً! أنا مطور ويب مبتدئ أتعلم وأطور مهاراتي</p>
+            <h1>About Me</h1>
+            <p>Hello! I'm a beginner web developer learning and improving my skills</p>
         </div>
         
         <div class="section">
-            <h2>📚 عني</h2>
-            <p>أنا شغوف بتكنولوجيا الويب والتعلم الذاتي. بدأت رحلتي في البرمجة مؤخراً وأعمل على تطوير مهاراتي في:</p>
+            <h2>📚 About Me</h2>
+            <p>
+                I'm passionate about web technology and self-learning. I started my programming journey recently and I'm working on developing my skills in:
+            </p>
             
             <div class="skills">
                 <span class="skill-tag">HTML</span>
@@ -65,42 +99,44 @@
         </div>
         
         <div class="section">
-            <h2>🎯 أهدافي</h2>
+            <h2>🎯 My Goals</h2>
             <ul>
-                <li>إتقان أساسيات تطوير الويب</li>
-                <li>بناء مشاريع عملية</li>
-                <li>تعلم React.js</li>
-                <li>إنشاء محفظة أعمال</li>
-                <li>المساهمة في مشاريع مفتوحة المصدر</li>
+                <li>Master web development basics</li>
+                <li>Build practical projects</li>
+                <li>Learn React.js</li>
+                <li>Create a portfolio</li>
+                <li>Contribute to open source projects</li>
             </ul>
         </div>
         
         <div class="section">
-            <h2>📅 خطتي</h2>
+            <h2>📅 My Plan</h2>
             <div class="cards">
                 <div class="card">
-                    <h3>🎨 الشهر الأول</h3>
-                    <p>HTML, CSS أساسيات</p>
-                    <p>بناء موقع شخصي</p>
+                    <h3>🎨 First Month</h3>
+                    <p>HTML, CSS basics</p>
+                    <p>Build personal website</p>
                 </div>
                 <div class="card">
-                    <h3>⚡ الشهر الثاني</h3>
-                    <p>JavaScript أساسيات</p>
-                    <p>إضافة تفاعل للموقع</p>
+                    <h3>⚡ Second Month</h3>
+                    <p>JavaScript basics</p>
+                    <p>Add interactivity to website</p>
                 </div>
                 <div class="card">
-                    <h3>🚀 الشهر الثالث</h3>
-                    <p>Node.js أساسيات</p>
-                    <p>بناء تطبيقات بسيطة</p>
+                    <h3>🚀 Third Month</h3>
+                    <p>Node.js basics</p>
+                    <p>Build simple applications</p>
                 </div>
             </div>
         </div>
     </div>
     
     <footer>
-        <p>© 2024 موقعي الشخصي | جميع الحقوق محفوظة</p>
+        <p>© 2024 My Personal Website | All rights reserved</p>
         <p style="margin-top: 10px;">
-            <a href="../index.html" style="color: #3498db; text-decoration: none;">← العودة للرئيسية</a>
+            <a href="../index.html" style="color: #3498db; text-decoration: none;">
+                ← Back to Home
+            </a>
         </p>
     </footer>
     

@@ -1,9 +1,9 @@
 <!DOCTYPE html>
-<html lang="ar" dir="rtl">
+<html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>اتصل بي - نموذج الإرسال بالبريد والتليجرام</title>
+    <title>Contact Me - Integrated Sending System</title>
     <link rel="stylesheet" href="../style.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <style>
@@ -26,51 +26,6 @@
             color: #333;
         }
 
-        nav {
-            background: rgba(255, 255, 255, 0.95);
-            padding: 15px 30px;
-            box-shadow: 0 2px 15px rgba(0, 0, 0, 0.1);
-            position: sticky;
-            top: 0;
-            z-index: 1000;
-        }
-
-        .nav-container {
-            max-width: 1200px;
-            margin: 0 auto;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-        }
-
-        .logo {
-            font-size: 1.5rem;
-            font-weight: bold;
-            color: var(--primary);
-            text-decoration: none;
-            display: flex;
-            align-items: center;
-            gap: 10px;
-        }
-
-        .nav-links a {
-            color: #555;
-            text-decoration: none;
-            padding: 8px 16px;
-            border-radius: 25px;
-            transition: all 0.3s;
-            display: flex;
-            align-items: center;
-            gap: 8px;
-            margin: 0 5px;
-        }
-
-        .nav-links a:hover,
-        .nav-links a.active {
-            background: var(--primary);
-            color: white;
-        }
-
         /* Hero Section */
         .hero-section {
             background: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)), 
@@ -79,8 +34,9 @@
             background-position: center;
             color: white;
             text-align: center;
-            padding: 80px 20px;
+            padding: 100px 20px 80px;
             margin-bottom: 40px;
+            margin-top: 20px;
         }
 
         .hero-section h1 {
@@ -145,10 +101,10 @@
             content: '';
             position: absolute;
             top: 0;
-            right: 0;
+            left: 0;
             width: 100%;
             height: 5px;
-            background: linear-gradient(to left, var(--primary), var(--telegram));
+            background: linear-gradient(to right, var(--primary), var(--telegram));
         }
 
         /* Form Groups */
@@ -258,8 +214,8 @@
             content: '';
             position: absolute;
             top: 20px;
-            right: 0;
             left: 0;
+            right: 0;
             height: 2px;
             background: #e0e0e0;
             z-index: 1;
@@ -338,6 +294,27 @@
             margin-top: 60px;
         }
 
+        /* Test Button */
+        .test-btn {
+            background: linear-gradient(135deg, var(--warning), var(--accent));
+            color: white;
+            border: none;
+            padding: 12px 25px;
+            border-radius: 12px;
+            font-weight: bold;
+            cursor: pointer;
+            transition: all 0.3s;
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            margin-top: 10px;
+        }
+
+        .test-btn:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 10px 20px rgba(255, 193, 7, 0.3);
+        }
+
         /* Responsive */
         @media (max-width: 768px) {
             .hero-section h1 {
@@ -357,6 +334,15 @@
                 width: 150px;
                 padding: 15px;
             }
+            
+            .progress-steps {
+                flex-direction: column;
+                gap: 20px;
+            }
+            
+            .progress-steps::before {
+                display: none;
+            }
         }
 
         /* Loading Animation */
@@ -371,19 +357,20 @@
         }
     </style>
 </head>
-<body>
-    <!-- Navigation -->
+<body id="contact">
+    <!-- FIXED NAVIGATION -->
     <nav>
         <div class="nav-container">
             <a href="../index.html" class="logo">
-                <i class="fas fa-robot"></i> نظام الإرسال المتكامل
+                <i class="fas fa-robot"></i> Integrated Sending System
             </a>
+            
             <div class="nav-links">
                 <a href="../index.html">
-                    <i class="fas fa-home"></i> الرئيسية
+                    <i class="fas fa-home"></i> Home
                 </a>
                 <a href="contact.html" class="active">
-                    <i class="fas fa-paper-plane"></i> إرسال الرسائل
+                    <i class="fas fa-paper-plane"></i> Send Messages
                 </a>
             </div>
         </div>
@@ -392,29 +379,31 @@
     <!-- Hero Section -->
     <section class="hero-section">
         <div style="max-width: 800px; margin: 0 auto;">
-            <h1><i class="fas fa-envelope-open-text"></i> نظام الإرسال الذكي</h1>
+            <h1>
+                <i class="fas fa-envelope-open-text"></i> Smart Sending System
+            </h1>
             <p style="font-size: 1.2rem; opacity: 0.9; margin-bottom: 30px;">
-                أرسل رسالتك مرة واحدة، تصل إلى البريد الإلكتروني والتليجرام معاً!
+                Send your message once, it reaches both email and Telegram!
             </p>
             
             <div class="services">
                 <div class="service-item email">
                     <i class="fas fa-envelope"></i>
-                    <h3>البريد الإلكتروني</h3>
-                    <p>إرسال مباشر عبر Formspree</p>
+                    <h3>Email</h3>
+                    <p>Direct sending via Formspree</p>
                 </div>
                 
                 <div class="service-item telegram">
                     <i class="fab fa-telegram-plane"></i>
-                    <h3>تيليجرام بوت</h3>
-                    <p>إشعار فوري على تليجرام</p>
+                    <h3>Telegram Bot</h3>
+                    <p>Instant notification on Telegram</p>
                 </div>
             </div>
             
             <!-- Bot Status Display -->
             <div class="bot-status" id="botStatus">
                 <i class="fab fa-telegram"></i>
-                <span id="botStatusText">جارِ التحقق من حالة البوت...</span>
+                <span id="botStatusText">Checking bot status...</span>
             </div>
         </div>
     </section>
@@ -424,15 +413,15 @@
         <div class="progress-steps">
             <div class="step active" id="step1">
                 <div class="step-icon">1</div>
-                <div>اكتب الرسالة</div>
+                <div>Write Message</div>
             </div>
             <div class="step" id="step2">
                 <div class="step-icon">2</div>
-                <div>إرسال البيانات</div>
+                <div>Send Data</div>
             </div>
             <div class="step" id="step3">
                 <div class="step-icon">3</div>
-                <div>تأكيد الإرسال</div>
+                <div>Confirm Sending</div>
             </div>
         </div>
     </div>
@@ -440,10 +429,10 @@
     <!-- Main Form -->
     <div class="form-container">
         <h2 style="color: #333; margin-bottom: 10px; text-align: center;">
-            <i class="fas fa-comment-alt"></i> نموذج الإرسال المتكامل
+            <i class="fas fa-comment-alt"></i> Integrated Sending Form
         </h2>
         <p style="color: #666; text-align: center; margin-bottom: 30px;">
-            املأ النموذج وأرسل. ستصل رسالتك إلى بريدي الإلكتروني وإلى تليجرام فوراً
+            Fill out the form and send. Your message will reach both my email and Telegram immediately
         </p>
 
         <!-- Status Messages -->
@@ -455,16 +444,16 @@
             <div class="form-group">
                 <label class="form-label">
                     <i class="fas fa-user-circle"></i>
-                    <span>الاسم الكامل</span>
+                    <span>Full Name</span>
                 </label>
                 <input type="text" id="fullName" name="name" class="form-input" 
-                       placeholder="أدخل اسمك الثلاثي" required>
+                       placeholder="Enter your full name" required>
             </div>
 
             <div class="form-group">
                 <label class="form-label">
                     <i class="fas fa-envelope"></i>
-                    <span>البريد الإلكتروني</span>
+                    <span>Email Address</span>
                 </label>
                 <input type="email" id="userEmail" name="email" class="form-input" 
                        placeholder="example@email.com" required>
@@ -475,7 +464,7 @@
                 <div class="form-group">
                     <label class="form-label">
                         <i class="fas fa-phone"></i>
-                        <span>رقم الهاتف</span>
+                        <span>Phone Number</span>
                     </label>
                     <input type="tel" id="phoneNumber" name="phone" class="form-input" 
                            placeholder="05XXXXXXXX">
@@ -484,15 +473,15 @@
                 <div class="form-group">
                     <label class="form-label">
                         <i class="fas fa-tag"></i>
-                        <span>نوع الرسالة</span>
+                        <span>Message Type</span>
                     </label>
                     <select id="messageType" name="type" class="form-input" required>
-                        <option value="">اختر نوع الرسالة</option>
-                        <option value="استفسار">استفسار</option>
-                        <option value="تعاون">طلب تعاون</option>
-                        <option value="مقابلة">مقابلة عمل</option>
-                        <option value="شكوى">شكوى أو اقتراح</option>
-                        <option value="أخرى">أخرى</option>
+                        <option value="">Select message type</option>
+                        <option value="Inquiry">Inquiry</option>
+                        <option value="Collaboration">Collaboration Request</option>
+                        <option value="Interview">Job Interview</option>
+                        <option value="Complaint">Complaint or Suggestion</option>
+                        <option value="Other">Other</option>
                     </select>
                 </div>
             </div>
@@ -501,27 +490,27 @@
             <div class="form-group">
                 <label class="form-label">
                     <i class="fas fa-comment-dots"></i>
-                    <span>الرسالة</span>
+                    <span>Message</span>
                 </label>
                 <textarea id="userMessage" name="message" class="form-input" 
-                          placeholder="اكتب رسالتك هنا بتفصيل..." required></textarea>
+                          placeholder="Write your message in detail here..." required></textarea>
             </div>
 
             <!-- Hidden Fields for Formspree -->
             <input type="hidden" name="_replyto" id="replyToEmail">
-            <input type="hidden" name="_subject" value="رسالة جديدة من النموذج المتكامل">
+            <input type="hidden" name="_subject" value="New message from integrated form">
 
             <!-- Submit Button -->
             <button type="submit" class="submit-btn" id="submitButton">
                 <i class="fas fa-paper-plane"></i>
-                <span>إرسال الرسالة</span>
+                <span>Send Message</span>
             </button>
         </form>
 
         <!-- Results Panel -->
         <div class="results-panel" id="resultsPanel">
             <h3 style="margin-bottom: 20px; color: #333;">
-                <i class="fas fa-list-check"></i> نتائج الإرسال
+                <i class="fas fa-list-check"></i> Sending Results
             </h3>
             
             <div class="result-item" id="emailResult">
@@ -529,8 +518,8 @@
                     <i class="fas fa-envelope" style="color: var(--email); font-size: 1.5rem;"></i>
                 </div>
                 <div>
-                    <strong>البريد الإلكتروني:</strong>
-                    <div id="emailStatusText">في انتظار الإرسال...</div>
+                    <strong>Email:</strong>
+                    <div id="emailStatusText">Waiting for sending...</div>
                 </div>
             </div>
             
@@ -539,10 +528,20 @@
                     <i class="fab fa-telegram-plane" style="color: var(--telegram); font-size: 1.5rem;"></i>
                 </div>
                 <div>
-                    <strong>تيليجرام بوت:</strong>
-                    <div id="telegramStatusText">في انتظار الإرسال...</div>
+                    <strong>Telegram Bot:</strong>
+                    <div id="telegramStatusText">Waiting for sending...</div>
                 </div>
             </div>
+        </div>
+        
+        <!-- Test Button -->
+        <div style="text-align: center; margin-top: 30px;">
+            <button onclick="sendTestMessage()" class="test-btn">
+                <i class="fas fa-vial"></i> <span>Test System</span>
+            </button>
+            <p style="color: #666; font-size: 0.9em; margin-top: 10px;">
+                Send a test message to verify system operation
+            </p>
         </div>
     </div>
 
@@ -550,7 +549,7 @@
     <footer>
         <div style="max-width: 1200px; margin: 0 auto;">
             <h3 style="margin-bottom: 15px;">
-                <i class="fas fa-robot"></i> نظام الإرسال المتكامل
+                <i class="fas fa-robot"></i> Integrated Sending System
             </h3>
             
             <div style="display: flex; justify-content: center; gap: 30px; margin: 20px 0; flex-wrap: wrap;">
@@ -573,22 +572,23 @@
                 <p id="systemTime" style="color: #667eea; font-weight: bold; font-size: 1.1rem;"></p>
                 <p id="systemStatus" style="opacity: 0.8;">
                     <span id="systemIcon"><i class="fas fa-circle" style="color: var(--success);"></i></span>
-                    <span id="systemText">النظام جاهز للإرسال</span>
+                    <span id="systemText">System ready for sending</span>
                 </p>
             </div>
             
             <p style="opacity: 0.7; margin-top: 30px; padding-top: 20px; border-top: 1px solid rgba(255,255,255,0.1);">
-                © 2024 نظام الإرسال المتكامل | جميع الحقوق محفوظة
+                © 2024 Integrated Sending System | All rights reserved
             </p>
         </div>
     </footer>
 
-    <!-- JavaScript -->
+    <script src="../script.js"></script>
+    
+    <!-- Contact Form JavaScript -->
     <script>
         // ========== CONFIGURATION ==========
         const TELEGRAM_BOT_TOKEN = '8443839182:AAHlH3mdltb9928V33Yzz8FO_dNgS1i3z0I';
-        const TELEGRAM_CHAT_ID = '8477771530'; // ✅ تم تعيين chat_id الصحيح
-        
+        const TELEGRAM_CHAT_ID = '8477771530';
         const FORMSPREE_ENDPOINT = 'https://formspree.io/f/xeekrjrd';
         
         // ========== DOM ELEMENTS ==========
@@ -605,29 +605,17 @@
 
         // ========== INITIALIZATION ==========
         document.addEventListener('DOMContentLoaded', async function() {
-            console.log('🚀 نظام الإرسال المتكامل - تم التحميل');
-            console.log('🤖 البوت: @zaher007_website_bot');
-            console.log('🔑 التوكن: ' + TELEGRAM_BOT_TOKEN.substring(0, 10) + '...');
-            console.log('✅ Chat ID: ' + TELEGRAM_CHAT_ID);
+            console.log('🚀 Integrated Sending System - Loaded');
             
             // Set up auto-reply email
-            document.getElementById('userEmail').addEventListener('input', function() {
-                document.getElementById('replyToEmail').value = this.value;
-            });
-
-            // Update system time
-            function updateSystemTime() {
-                const now = new Date();
-                const timeString = now.toLocaleTimeString('ar-SA', {
-                    hour: '2-digit',
-                    minute: '2-digit',
-                    second: '2-digit'
+            const userEmailInput = document.getElementById('userEmail');
+            const replyToEmail = document.getElementById('replyToEmail');
+            
+            if (userEmailInput && replyToEmail) {
+                userEmailInput.addEventListener('input', function() {
+                    replyToEmail.value = this.value;
                 });
-                document.getElementById('systemTime').innerHTML = 
-                    `<i class="far fa-clock"></i> ${timeString}`;
             }
-            updateSystemTime();
-            setInterval(updateSystemTime, 1000);
 
             // Check Telegram bot status
             await checkBotStatus();
@@ -639,7 +627,9 @@
         // ========== TELEGRAM FUNCTIONS ==========
         async function checkBotStatus() {
             try {
-                botStatusText.innerHTML = '<i class="fas fa-spinner loading-spinner"></i> جارِ التحقق من البوت...';
+                if (botStatusText) {
+                    botStatusText.innerHTML = `<i class="fas fa-spinner loading-spinner"></i> Checking bot...`;
+                }
                 
                 const response = await fetch(
                     `https://api.telegram.org/bot${TELEGRAM_BOT_TOKEN}/getMe`
@@ -647,24 +637,32 @@
                 
                 const data = await response.json();
                 
-                if (data.ok) {
+                if (data.ok && botStatusText) {
                     botStatusText.innerHTML = 
-                        `<i class="fas fa-check-circle" style="color: var(--success);"></i> البوت نشط: @${data.result.username}`;
-                    botStatus.style.background = 'rgba(40, 167, 69, 0.1)';
-                    botStatus.style.borderColor = 'var(--success)';
+                        `<i class="fas fa-check-circle" style="color: var(--success);"></i> Bot active: @${data.result.username}`;
+                    if (botStatus) {
+                        botStatus.style.background = 'rgba(40, 167, 69, 0.1)';
+                        botStatus.style.borderColor = 'var(--success)';
+                    }
                     
                     console.log('✅ Telegram Bot Status:', data.result);
                     return true;
                 } else {
-                    botStatusText.innerHTML = 
-                        `<i class="fas fa-times-circle" style="color: var(--danger);"></i> خطأ في البوت: ${data.description}`;
-                    botStatus.style.background = 'rgba(220, 53, 69, 0.1)';
+                    if (botStatusText) {
+                        botStatusText.innerHTML = 
+                            `<i class="fas fa-times-circle" style="color: var(--danger);"></i> Bot error: ${data.description}`;
+                    }
+                    if (botStatus) {
+                        botStatus.style.background = 'rgba(220, 53, 69, 0.1)';
+                    }
                     console.error('❌ Telegram Bot Error:', data);
                     return false;
                 }
             } catch (error) {
-                botStatusText.innerHTML = 
-                    `<i class="fas fa-exclamation-triangle" style="color: var(--warning);"></i> خطأ في الاتصال بالبوت`;
+                if (botStatusText) {
+                    botStatusText.innerHTML = 
+                        `<i class="fas fa-exclamation-triangle" style="color: var(--warning);"></i> Connection error with bot`;
+                }
                 console.error('❌ Network Error:', error);
                 return false;
             }
@@ -672,43 +670,43 @@
 
         async function testTelegramConnection() {
             try {
-                console.log('🔗 اختبار اتصال تيليجرام...');
+                console.log('🔗 Testing Telegram connection...');
                 
-                const testMessage = encodeURIComponent('✅ اتصال البوت يعمل بشكل صحيح!');
+                const testMessage = encodeURIComponent('✅ Bot connection works correctly!');
                 const url = `https://api.telegram.org/bot${TELEGRAM_BOT_TOKEN}/sendMessage?chat_id=${TELEGRAM_CHAT_ID}&text=${testMessage}`;
                 
                 const response = await fetch(url);
                 const result = await response.json();
                 
                 if (result.ok) {
-                    console.log('✅ اتصال تيليجرام يعمل بنجاح!');
+                    console.log('✅ Telegram connection works successfully!');
                     return true;
                 } else {
-                    console.error('❌ خطأ في اتصال تيليجرام:', result);
+                    console.error('❌ Telegram connection error:', result);
                     return false;
                 }
             } catch (error) {
-                console.error('❌ خطأ شبكة:', error);
+                console.error('❌ Network error:', error);
                 return false;
             }
         }
 
         async function sendToTelegram(formData) {
             try {
-                console.log('📱 جاري إرسال إلى تيليجرام...');
+                console.log('📱 Sending to Telegram...');
                 
                 // Format the message
                 const message = `
-📬 *رسالة جديدة من موقعك* 
+📬 *Smart Sending System* 
 
-👤 *الاسم:* ${formData.name}
-📧 *البريد:* ${formData.email}
-📞 *الهاتف:* ${formData.phone || 'غير محدد'}
-🏷️ *النوع:* ${formData.type}
-💬 *الرسالة:*
+👤 *Full Name:* ${formData.name}
+📧 *Email Address:* ${formData.email}
+📞 *Phone Number:* ${formData.phone || 'Not provided'}
+🏷️ *Message Type:* ${formData.type}
+💬 *Message:*
 ${formData.message}
 
-🕐 *الوقت:* ${new Date().toLocaleString('ar-SA')}
+🕐 *System Time:* ${new Date().toLocaleString('en-US')}
                 `;
                 
                 // URL encode
@@ -717,29 +715,29 @@ ${formData.message}
                 // Build Telegram URL
                 const url = `https://api.telegram.org/bot${TELEGRAM_BOT_TOKEN}/sendMessage?chat_id=${TELEGRAM_CHAT_ID}&text=${encodedMessage}&parse_mode=Markdown`;
                 
-                console.log('🔗 إرسال إلى تيليجرام...');
+                console.log('🔗 Sending to Telegram...');
                 
                 // Send request
                 const response = await fetch(url);
                 const result = await response.json();
                 
-                console.log('📱 نتيجة تيليجرام:', result);
+                console.log('📱 Telegram result:', result);
                 
                 if (result.ok) {
-                    console.log('✅ تم الإرسال بنجاح إلى تيليجرام');
-                    return { success: true, message: 'تم الإرسال إلى تيليجرام' };
+                    console.log('✅ Successfully sent to Telegram');
+                    return { success: true, message: "Sent successfully" };
                 } else {
-                    console.error('❌ خطأ تيليجرام:', result);
+                    console.error('❌ Telegram error:', result);
                     return { 
                         success: false, 
-                        message: `خطأ: ${result.description || 'غير معروف'}` 
+                        message: `Sending failed: ${result.description || "Connection error"}` 
                     };
                 }
             } catch (error) {
-                console.error('❌ خطأ شبكة:', error);
+                console.error('❌ Network error:', error);
                 return { 
                     success: false, 
-                    message: 'خطأ في الاتصال بتيليجرام' 
+                    message: "Connection error" 
                 };
             }
         }
@@ -747,7 +745,7 @@ ${formData.message}
         // ========== FORMSPREE FUNCTIONS ==========
         async function sendToFormspree(formData) {
             try {
-                console.log('📧 جاري إرسال إلى Formspree...');
+                console.log('📧 Sending to Formspree...');
                 
                 const formDataObj = new FormData();
                 formDataObj.append('name', formData.name);
@@ -756,7 +754,7 @@ ${formData.message}
                 formDataObj.append('type', formData.type);
                 formDataObj.append('message', formData.message);
                 formDataObj.append('_replyto', formData.email);
-                formDataObj.append('_subject', 'رسالة جديدة من الموقع');
+                formDataObj.append('_subject', 'New message from website');
 
                 const response = await fetch(FORMSPREE_ENDPOINT, {
                     method: 'POST',
@@ -765,118 +763,134 @@ ${formData.message}
                 });
 
                 if (response.ok) {
-                    console.log('✅ تم الإرسال بنجاح إلى Formspree');
-                    return { success: true, message: 'تم الإرسال إلى البريد' };
+                    console.log('✅ Successfully sent to Formspree');
+                    return { success: true, message: "Sent successfully" };
                 } else {
                     const error = await response.json();
-                    console.error('❌ خطأ Formspree:', error);
-                    return { success: false, message: 'فشل إرسال البريد' };
+                    console.error('❌ Formspree error:', error);
+                    return { success: false, message: "Sending failed" };
                 }
             } catch (error) {
-                console.error('❌ خطأ شبكة Formspree:', error);
-                return { success: false, message: 'خطأ في الاتصال' };
+                console.error('❌ Formspree network error:', error);
+                return { success: false, message: "Connection error" };
             }
         }
 
         // ========== FORM SUBMISSION ==========
-        contactForm.addEventListener('submit', async function(e) {
-            e.preventDefault();
-            
-            // Get form data
-            const formData = {
-                name: document.getElementById('fullName').value.trim(),
-                email: document.getElementById('userEmail').value.trim(),
-                phone: document.getElementById('phoneNumber').value.trim(),
-                type: document.getElementById('messageType').value,
-                message: document.getElementById('userMessage').value.trim()
-            };
-
-            // Validation
-            if (!validateForm(formData)) {
-                return;
-            }
-
-            // Update UI
-            updateStep(2);
-            submitButton.disabled = true;
-            submitButton.innerHTML = '<i class="fas fa-spinner loading-spinner"></i> جاري الإرسال...';
-            
-            // Show results panel
-            resultsPanel.style.display = 'block';
-            emailStatusText.textContent = 'جاري الإرسال...';
-            telegramStatusText.textContent = 'جاري الإرسال...';
-
-            // Reset results
-            emailResult.className = 'result-item';
-            telegramResult.className = 'result-item';
-
-            // Send to both services
-            const [formspreeResult, telegramResultData] = await Promise.allSettled([
-                sendToFormspree(formData),
-                sendToTelegram(formData)
-            ]);
-
-            // Process results
-            const emailSuccess = formspreeResult.status === 'fulfilled' && formspreeResult.value.success;
-            const telegramSuccess = telegramResultData.status === 'fulfilled' && telegramResultData.value.success;
-
-            // Update UI with results
-            if (emailSuccess) {
-                emailResult.classList.add('success');
-                emailStatusText.innerHTML = '<i class="fas fa-check-circle" style="color: var(--success);"></i> تم الإرسال بنجاح';
-            } else {
-                emailResult.classList.add('error');
-                emailStatusText.innerHTML = '<i class="fas fa-times-circle" style="color: var(--danger);"></i> فشل الإرسال';
-            }
-
-            if (telegramSuccess) {
-                telegramResult.classList.add('success');
-                telegramStatusText.innerHTML = '<i class="fas fa-check-circle" style="color: var(--success);"></i> تم الإرسال بنجاح';
-            } else {
-                telegramResult.classList.add('error');
-                const errorMsg = telegramResultData.value?.message || 'فشل الإرسال';
-                telegramStatusText.innerHTML = `<i class="fas fa-times-circle" style="color: var(--danger);"></i> ${errorMsg}`;
-            }
-
-            // Update final status
-            if (emailSuccess || telegramSuccess) {
-                updateStep(3);
+        if (contactForm) {
+            contactForm.addEventListener('submit', async function(e) {
+                e.preventDefault();
                 
-                let successMessage = '✅ تم استلام رسالتك!';
-                if (emailSuccess && telegramSuccess) {
-                    successMessage += ' وصلت إلى البريد وتيليجرام';
-                } else if (emailSuccess) {
-                    successMessage += ' وصلت إلى البريد';
-                } else if (telegramSuccess) {
-                    successMessage += ' وصلت إلى تيليجرام';
+                // Get form data
+                const formData = {
+                    name: document.getElementById('fullName')?.value.trim() || '',
+                    email: document.getElementById('userEmail')?.value.trim() || '',
+                    phone: document.getElementById('phoneNumber')?.value.trim() || '',
+                    type: document.getElementById('messageType')?.value || '',
+                    message: document.getElementById('userMessage')?.value.trim() || ''
+                };
+
+                // Validation
+                if (!validateForm(formData)) {
+                    return;
+                }
+
+                // Update UI
+                updateStep(2);
+                if (submitButton) {
+                    submitButton.disabled = true;
+                    submitButton.innerHTML = `<i class="fas fa-spinner loading-spinner"></i> Sending...`;
                 }
                 
-                showStatusMessage(successMessage, 'success');
-                
-                // Reset form after 3 seconds
-                setTimeout(() => {
-                    contactForm.reset();
-                    resultsPanel.style.display = 'none';
-                    updateStep(1);
-                }, 3000);
-            } else {
-                showStatusMessage('❌ فشل إرسال الرسالة. حاول مرة أخرى.', 'error');
-            }
+                // Show results panel
+                if (resultsPanel) {
+                    resultsPanel.style.display = 'block';
+                }
+                if (emailStatusText) {
+                    emailStatusText.textContent = 'Waiting for sending...';
+                }
+                if (telegramStatusText) {
+                    telegramStatusText.textContent = 'Waiting for sending...';
+                }
 
-            // Reset button
-            submitButton.disabled = false;
-            submitButton.innerHTML = '<i class="fas fa-paper-plane"></i> إرسال الرسالة';
-        });
+                // Reset results
+                if (emailResult) emailResult.className = 'result-item';
+                if (telegramResult) telegramResult.className = 'result-item';
+
+                // Send to both services
+                const [formspreeResult, telegramResultData] = await Promise.allSettled([
+                    sendToFormspree(formData),
+                    sendToTelegram(formData)
+                ]);
+
+                // Process results
+                const emailSuccess = formspreeResult.status === 'fulfilled' && formspreeResult.value.success;
+                const telegramSuccess = telegramResultData.status === 'fulfilled' && telegramResultData.value.success;
+
+                // Update UI with results
+                if (emailResult && emailStatusText) {
+                    if (emailSuccess) {
+                        emailResult.classList.add('success');
+                        emailStatusText.innerHTML = `<i class="fas fa-check-circle" style="color: var(--success);"></i> Sent successfully`;
+                    } else {
+                        emailResult.classList.add('error');
+                        emailStatusText.innerHTML = `<i class="fas fa-times-circle" style="color: var(--danger);"></i> Sending failed`;
+                    }
+                }
+
+                if (telegramResult && telegramStatusText) {
+                    if (telegramSuccess) {
+                        telegramResult.classList.add('success');
+                        telegramStatusText.innerHTML = `<i class="fas fa-check-circle" style="color: var(--success);"></i> Sent successfully`;
+                    } else {
+                        telegramResult.classList.add('error');
+                        const errorMsg = telegramResultData.value?.message || 'Sending failed';
+                        telegramStatusText.innerHTML = `<i class="fas fa-times-circle" style="color: var(--danger);"></i> ${errorMsg}`;
+                    }
+                }
+
+                // Update final status
+                if (emailSuccess || telegramSuccess) {
+                    updateStep(3);
+                    
+                    let successMessage = '✅ Your message has been received!';
+                    if (emailSuccess && telegramSuccess) {
+                        successMessage += ' Reached both email and Telegram';
+                    } else if (emailSuccess) {
+                        successMessage += ' Reached email';
+                    } else if (telegramSuccess) {
+                        successMessage += ' Reached Telegram';
+                    }
+                    
+                    showStatusMessage(successMessage, 'success');
+                    
+                    // Reset form after 3 seconds
+                    setTimeout(() => {
+                        if (contactForm) contactForm.reset();
+                        if (resultsPanel) resultsPanel.style.display = 'none';
+                        updateStep(1);
+                    }, 3000);
+                } else {
+                    showStatusMessage('❌ Failed to send message. Please try again.', 'error');
+                }
+
+                // Reset button
+                if (submitButton) {
+                    submitButton.disabled = false;
+                    submitButton.innerHTML = `<i class="fas fa-paper-plane"></i> Send Message`;
+                }
+            });
+        }
 
         // ========== HELPER FUNCTIONS ==========
         function validateForm(data) {
             if (!data.name || !data.email || !data.type || !data.message) {
-                showStatusMessage('❌ يرجى ملء جميع الحقول المطلوبة', 'error');
+                showStatusMessage('❌ Please fill all required fields', 'error');
                 return false;
             }
 
             if (!validateEmail(data.email)) {
-                showStatusMessage('❌ يرجى إدخال بريد إلكتروني صحيح', 'error');
+                showStatusMessage('❌ Please enter a valid email address', 'error');
                 return false;
             }
 
@@ -889,22 +903,25 @@ ${formData.message}
         }
 
         function showStatusMessage(message, type) {
+            if (!statusMessage) return;
+            
             statusMessage.textContent = message;
             statusMessage.className = `status-message status-${type}`;
             statusMessage.style.display = 'block';
             
             setTimeout(() => {
-                statusMessage.style.display = 'none';
+                if (statusMessage) {
+                    statusMessage.style.display = 'none';
+                }
             }, 5000);
         }
 
         function updateStep(stepNumber) {
             // Reset all steps
-            [document.getElementById('step1'), 
-             document.getElementById('step2'), 
-             document.getElementById('step3')].forEach(step => {
+            for (let i = 1; i <= 3; i++) {
+                const step = document.getElementById(`step${i}`);
                 if (step) step.classList.remove('active');
-            });
+            }
             
             // Activate current step and previous ones
             for (let i = 1; i <= stepNumber; i++) {
@@ -913,32 +930,26 @@ ${formData.message}
             }
         }
 
-        // ========== GLOBAL FUNCTIONS FOR TESTING ==========
+        // ========== TEST FUNCTION ==========
         window.sendTestMessage = async function() {
-            console.log('🧪 إرسال رسالة تجريبية...');
+            console.log('🧪 Sending test message...');
             
             const testData = {
-                name: 'اختبار النظام',
+                name: 'Test System',
                 email: 'test@example.com',
                 phone: '0512345678',
-                type: 'اختبار',
-                message: 'هذه رسالة اختبار من الموقع'
+                type: 'Test',
+                message: 'This is a test message to verify system operation'
             };
             
             const result = await sendToTelegram(testData);
             
             if (result.success) {
-                alert('✅ تم إرسال رسالة اختبار بنجاح!');
+                alert('✅ Test System Sent successfully');
             } else {
                 alert(`❌ ${result.message}`);
             }
         };
-
-        // Welcome message
-        console.log('🎉 النظام جاهز للعمل!');
-        console.log('💡 يمكنك اختبار النظام بأحد الطرق:');
-        console.log('   1. املأ النموذج واضغط إرسال');
-        console.log('   2. افتح وحدة التحكم (F12) واكتب: sendTestMessage()');
     </script>
 </body>
 </html>
