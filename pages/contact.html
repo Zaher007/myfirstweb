@@ -3,100 +3,198 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>اتصل بي - موقعي الشخصي</title>
+    <title>اتصل بي - نموذج الإرسال بالبريد والتليجرام</title>
     <link rel="stylesheet" href="../style.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <style>
-        /* أنماط خاصة بصفحة الاتصال */
         :root {
             --primary: #4361ee;
             --secondary: #3a0ca3;
             --accent: #f72585;
-            --light: #f8f9fa;
-            --dark: #212529;
+            --telegram: #0088cc;
+            --email: #ea4335;
+            --success: #28a745;
+            --warning: #ffc107;
+            --danger: #dc3545;
         }
-        
-        .contact-hero {
-            background: linear-gradient(135deg, var(--secondary), #7209b7);
+
+        body {
+            font-family: 'Segoe UI', 'Arial', sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+            margin: 0;
+            color: #333;
+        }
+
+        nav {
+            background: rgba(255, 255, 255, 0.95);
+            padding: 15px 30px;
+            box-shadow: 0 2px 15px rgba(0, 0, 0, 0.1);
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+        }
+
+        .nav-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            font-size: 1.5rem;
+            font-weight: bold;
+            color: var(--primary);
+            text-decoration: none;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .nav-links a {
+            color: #555;
+            text-decoration: none;
+            padding: 8px 16px;
+            border-radius: 25px;
+            transition: all 0.3s;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            margin: 0 5px;
+        }
+
+        .nav-links a:hover,
+        .nav-links a.active {
+            background: var(--primary);
+            color: white;
+        }
+
+        /* Hero Section */
+        .hero-section {
+            background: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)), 
+                        url('https://images.unsplash.com/photo-1551288049-bebda4e38f71?ixlib=rb-4.0.3&auto=format&fit=crop&w=1470&q=80');
+            background-size: cover;
+            background-position: center;
             color: white;
             text-align: center;
             padding: 80px 20px;
-            margin-bottom: 50px;
-            border-radius: 0 0 30px 30px;
+            margin-bottom: 40px;
         }
-        
-        .contact-hero h1 {
+
+        .hero-section h1 {
             font-size: 2.8rem;
+            margin-bottom: 20px;
+            animation: fadeIn 1s ease;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        /* Services Icons */
+        .services {
+            display: flex;
+            justify-content: center;
+            gap: 30px;
+            margin: 30px 0;
+            flex-wrap: wrap;
+        }
+
+        .service-item {
+            background: rgba(255, 255, 255, 0.1);
+            padding: 20px;
+            border-radius: 15px;
+            width: 180px;
+            backdrop-filter: blur(10px);
+            transition: transform 0.3s;
+        }
+
+        .service-item:hover {
+            transform: translateY(-5px);
+        }
+
+        .service-item i {
+            font-size: 2.5rem;
             margin-bottom: 15px;
-            color: white;
         }
-        
-        .contact-hero p {
-            font-size: 1.2rem;
-            opacity: 0.9;
-            max-width: 600px;
-            margin: 0 auto;
+
+        .service-item.email i {
+            color: var(--email);
         }
-        
-        .contact-container {
-            max-width: 1200px;
-            margin: 0 auto;
-            padding: 0 20px;
+
+        .service-item.telegram i {
+            color: var(--telegram);
         }
-        
-        .contact-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 40px;
-            margin: 50px 0;
-        }
-        
-        .contact-form-container {
+
+        /* Form Container */
+        .form-container {
+            max-width: 800px;
+            margin: 40px auto;
             background: white;
-            padding: 40px;
             border-radius: 20px;
-            box-shadow: 0 15px 40px rgba(0,0,0,0.1);
+            padding: 40px;
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.1);
+            position: relative;
+            overflow: hidden;
         }
-        
+
+        .form-container::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            right: 0;
+            width: 100%;
+            height: 5px;
+            background: linear-gradient(to left, var(--primary), var(--telegram));
+        }
+
+        /* Form Groups */
         .form-group {
             margin-bottom: 25px;
         }
-        
-        .form-group label {
+
+        .form-label {
             display: block;
-            margin-bottom: 10px;
+            margin-bottom: 8px;
             font-weight: 600;
-            color: var(--dark);
-            font-size: 1.1rem;
+            color: #333;
+            display: flex;
+            align-items: center;
+            gap: 10px;
         }
-        
-        .form-control {
+
+        .form-input {
             width: 100%;
-            padding: 15px;
+            padding: 14px 20px;
             border: 2px solid #e0e0e0;
-            border-radius: 10px;
+            border-radius: 12px;
             font-size: 1rem;
             transition: all 0.3s;
-            background: var(--light);
+            background: #f8f9fa;
         }
-        
-        .form-control:focus {
+
+        .form-input:focus {
             outline: none;
             border-color: var(--primary);
             box-shadow: 0 0 0 3px rgba(67, 97, 238, 0.1);
+            background: white;
         }
-        
-        textarea.form-control {
+
+        textarea.form-input {
             min-height: 150px;
             resize: vertical;
         }
-        
+
+        /* Submit Button */
         .submit-btn {
-            background: linear-gradient(to right, var(--primary), var(--secondary));
+            background: linear-gradient(135deg, var(--primary), var(--telegram));
             color: white;
             border: none;
             padding: 16px 40px;
-            border-radius: 10px;
+            border-radius: 12px;
             font-size: 1.1rem;
             font-weight: bold;
             cursor: pointer;
@@ -105,710 +203,742 @@
             display: flex;
             align-items: center;
             justify-content: center;
-            gap: 10px;
+            gap: 12px;
+            margin-top: 20px;
         }
-        
+
         .submit-btn:hover {
             transform: translateY(-3px);
             box-shadow: 0 10px 25px rgba(67, 97, 238, 0.3);
         }
-        
-        .contact-info {
-            background: linear-gradient(135deg, #f8f9fa, #e9ecef);
-            padding: 40px;
-            border-radius: 20px;
+
+        .submit-btn:disabled {
+            opacity: 0.6;
+            cursor: not-allowed;
+            transform: none;
+            box-shadow: none;
         }
-        
-        .info-item {
-            display: flex;
-            align-items: flex-start;
-            gap: 20px;
-            margin-bottom: 30px;
-            padding-bottom: 20px;
-            border-bottom: 2px solid rgba(0,0,0,0.05);
-        }
-        
-        .info-item:last-child {
-            border-bottom: none;
-        }
-        
-        .info-icon {
-            background: var(--primary);
-            color: white;
-            width: 60px;
-            height: 60px;
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 1.5rem;
-            flex-shrink: 0;
-        }
-        
-        .info-content h3 {
-            color: var(--dark);
-            margin-bottom: 8px;
-            font-size: 1.3rem;
-        }
-        
-        .info-content p {
-            color: #666;
-            line-height: 1.6;
-        }
-        
-        .social-links {
-            display: flex;
-            gap: 15px;
-            margin-top: 20px;
-        }
-        
-        .social-link {
-            width: 45px;
-            height: 45px;
-            border-radius: 50%;
-            background: var(--primary);
-            color: white;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            text-decoration: none;
-            transition: all 0.3s;
-            font-size: 1.2rem;
-        }
-        
-        .social-link:hover {
-            transform: translateY(-5px);
-            background: var(--accent);
-        }
-        
-        .map-container {
-            margin-top: 60px;
-            background: white;
-            padding: 30px;
-            border-radius: 20px;
-            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
-        }
-        
-        .map-placeholder {
-            background: linear-gradient(135deg, #667eea, #764ba2);
-            height: 300px;
-            border-radius: 15px;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            justify-content: center;
-            color: white;
-            text-align: center;
-            padding: 20px;
-        }
-        
-        .map-placeholder i {
-            font-size: 4rem;
-            margin-bottom: 20px;
-        }
-        
-        .contact-stats {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-            gap: 20px;
-            margin: 40px 0;
-        }
-        
-        .stat-card {
-            background: white;
-            padding: 30px;
-            border-radius: 15px;
-            text-align: center;
-            box-shadow: 0 5px 20px rgba(0,0,0,0.08);
-            transition: all 0.3s;
-        }
-        
-        .stat-card:hover {
-            transform: translateY(-10px);
-        }
-        
-        .stat-card i {
-            font-size: 2.5rem;
-            color: var(--primary);
-            margin-bottom: 15px;
-        }
-        
-        .stat-number {
-            font-size: 2.2rem;
-            font-weight: bold;
-            color: var(--dark);
-            display: block;
-            margin: 10px 0;
-        }
-        
-        .stat-label {
-            color: #666;
-            font-size: 0.95rem;
-        }
-        
-        /* تصميم متجاوب */
-        @media (max-width: 768px) {
-            .contact-hero {
-                padding: 50px 20px;
-            }
-            
-            .contact-hero h1 {
-                font-size: 2rem;
-            }
-            
-            .contact-grid {
-                grid-template-columns: 1fr;
-            }
-            
-            .contact-form-container,
-            .contact-info {
-                padding: 25px;
-            }
-            
-            .info-item {
-                flex-direction: column;
-                text-align: center;
-            }
-            
-            .info-icon {
-                margin: 0 auto;
-            }
-        }
-        
-        /* رسائل النموذج */
-        .form-message {
-            padding: 15px;
+
+        /* Status Messages */
+        .status-message {
+            padding: 15px 20px;
             border-radius: 10px;
             margin: 20px 0;
             text-align: center;
             display: none;
+            animation: slideIn 0.5s ease;
         }
-        
-        .form-message.success {
+
+        @keyframes slideIn {
+            from { opacity: 0; transform: translateY(-20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        .status-success {
             background: #d4edda;
             color: #155724;
             border: 1px solid #c3e6cb;
         }
-        
-        .form-message.error {
+
+        .status-error {
             background: #f8d7da;
             color: #721c24;
             border: 1px solid #f5c6cb;
         }
-        
-        /* توجيهات Formspree */
-        .formspree-guide {
-            background: #e8f4fc;
-            padding: 20px;
-            border-radius: 10px;
+
+        /* Progress Steps */
+        .progress-steps {
+            display: flex;
+            justify-content: space-between;
+            margin: 40px 0;
+            position: relative;
+        }
+
+        .progress-steps::before {
+            content: '';
+            position: absolute;
+            top: 20px;
+            right: 0;
+            left: 0;
+            height: 2px;
+            background: #e0e0e0;
+            z-index: 1;
+        }
+
+        .step {
+            text-align: center;
+            position: relative;
+            z-index: 2;
+            background: white;
+            padding: 0 15px;
+        }
+
+        .step-icon {
+            width: 40px;
+            height: 40px;
+            background: #e0e0e0;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 10px;
+            color: #666;
+            transition: all 0.3s;
+        }
+
+        .step.active .step-icon {
+            background: var(--primary);
+            color: white;
+        }
+
+        /* Results Panel */
+        .results-panel {
+            background: #f8f9fa;
+            border-radius: 15px;
+            padding: 30px;
             margin-top: 30px;
-            border-right: 4px solid var(--primary);
+            display: none;
         }
-        
-        .formspree-guide h4 {
-            color: var(--primary);
-            margin-bottom: 10px;
+
+        .result-item {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            margin-bottom: 20px;
+            padding: 15px;
+            background: white;
+            border-radius: 10px;
+            border-left: 4px solid var(--primary);
         }
-        
-        .formspree-guide ol {
-            padding-right: 20px;
+
+        .result-item.success {
+            border-left-color: var(--success);
         }
-        
-        .formspree-guide li {
-            margin-bottom: 8px;
-            line-height: 1.6;
+
+        .result-item.error {
+            border-left-color: var(--danger);
+        }
+
+        /* Bot Status */
+        .bot-status {
+            background: rgba(0, 136, 204, 0.1);
+            border: 2px solid var(--telegram);
+            padding: 15px;
+            border-radius: 10px;
+            margin: 20px 0;
+            text-align: center;
+        }
+
+        /* Footer */
+        footer {
+            background: #2c3e50;
+            color: white;
+            text-align: center;
+            padding: 40px 20px;
+            margin-top: 60px;
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .hero-section h1 {
+                font-size: 2rem;
+            }
+            
+            .form-container {
+                padding: 25px;
+                margin: 20px;
+            }
+            
+            .services {
+                gap: 15px;
+            }
+            
+            .service-item {
+                width: 150px;
+                padding: 15px;
+            }
+        }
+
+        /* Loading Animation */
+        .loading-spinner {
+            display: inline-block;
+            animation: spin 1s linear infinite;
+        }
+
+        @keyframes spin {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
         }
     </style>
 </head>
 <body>
-    <!-- شريط التنقل -->
+    <!-- Navigation -->
     <nav>
         <div class="nav-container">
             <a href="../index.html" class="logo">
-                <i class="fas fa-code"></i> موقعي
+                <i class="fas fa-robot"></i> نظام الإرسال المتكامل
             </a>
             <div class="nav-links">
                 <a href="../index.html">
                     <i class="fas fa-home"></i> الرئيسية
                 </a>
-                <a href="about.html">
-                    <i class="fas fa-user"></i> من أنا
-                </a>
                 <a href="contact.html" class="active">
-                    <i class="fas fa-envelope"></i> اتصل بي
+                    <i class="fas fa-paper-plane"></i> إرسال الرسائل
                 </a>
             </div>
         </div>
     </nav>
 
-    <!-- قسم البطل -->
-    <section class="contact-hero">
-        <div class="contact-container">
-            <h1><i class="fas fa-comments"></i> تواصل معي</h1>
-            <p>أنا هنا للإجابة على استفساراتك وسماع اقتراحاتك. لا تتردد في مراسلتي!</p>
+    <!-- Hero Section -->
+    <section class="hero-section">
+        <div style="max-width: 800px; margin: 0 auto;">
+            <h1><i class="fas fa-envelope-open-text"></i> نظام الإرسال الذكي</h1>
+            <p style="font-size: 1.2rem; opacity: 0.9; margin-bottom: 30px;">
+                أرسل رسالتك مرة واحدة، تصل إلى البريد الإلكتروني والتليجرام معاً!
+            </p>
+            
+            <div class="services">
+                <div class="service-item email">
+                    <i class="fas fa-envelope"></i>
+                    <h3>البريد الإلكتروني</h3>
+                    <p>إرسال مباشر عبر Formspree</p>
+                </div>
+                
+                <div class="service-item telegram">
+                    <i class="fab fa-telegram-plane"></i>
+                    <h3>تيليجرام بوت</h3>
+                    <p>إشعار فوري على تليجرام</p>
+                </div>
+            </div>
+            
+            <!-- Bot Status Display -->
+            <div class="bot-status" id="botStatus">
+                <i class="fab fa-telegram"></i>
+                <span id="botStatusText">جارِ التحقق من حالة البوت...</span>
+            </div>
         </div>
     </section>
 
-    <div class="contact-container">
-        <!-- إحصائيات -->
-        <div class="contact-stats">
-            <div class="stat-card">
-                <i class="fas fa-clock"></i>
-                <span class="stat-number">24/7</span>
-                <span class="stat-label">متاح للرد</span>
+    <!-- Progress Steps -->
+    <div style="max-width: 800px; margin: 0 auto;">
+        <div class="progress-steps">
+            <div class="step active" id="step1">
+                <div class="step-icon">1</div>
+                <div>اكتب الرسالة</div>
             </div>
-            <div class="stat-card">
-                <i class="fas fa-reply"></i>
-                <span class="stat-number" id="response-time">12</span>
-                <span class="stat-label">ساعة للرد</span>
+            <div class="step" id="step2">
+                <div class="step-icon">2</div>
+                <div>إرسال البيانات</div>
             </div>
-            <div class="stat-card">
-                <i class="fas fa-check-circle"></i>
-                <span class="stat-number">100%</span>
-                <span class="stat-label">نسبة الرد</span>
+            <div class="step" id="step3">
+                <div class="step-icon">3</div>
+                <div>تأكيد الإرسال</div>
             </div>
-            <div class="stat-card">
-                <i class="fas fa-smile"></i>
-                <span class="stat-number" id="happy-clients">50+</span>
-                <span class="stat-label">عميل سعيد</span>
-            </div>
-        </div>
-
-        <!-- شبكة المحتوى -->
-        <div class="contact-grid">
-            <!-- نموذج الاتصال -->
-            <div class="contact-form-container">
-                <h2 style="color: var(--dark); margin-bottom: 30px;">
-                    <i class="fas fa-paper-plane"></i> أرسل رسالة
-                </h2>
-                
-                <!-- رسالة النجاح/الخطأ -->
-                <div id="formMessage" class="form-message"></div>
-                
-                <!-- 🔥 نموذج Formspree الحقيقي -->
-                <form id="contactForm" action="https://formspree.io/f/xeekrjrd" method="POST">
-                    <div class="form-group">
-                        <label for="name">
-                            <i class="fas fa-user"></i> الاسم الكامل
-                        </label>
-                        <input type="text" 
-                               id="name" 
-                               name="name"
-                               class="form-control" 
-                               placeholder="أدخل اسمك الكامل" 
-                               required>
-                    </div>
-                    
-                    <div class="form-group">
-                        <label for="email">
-                            <i class="fas fa-envelope"></i> البريد الإلكتروني
-                        </label>
-                        <input type="email" 
-                               id="email" 
-                               name="email"
-                               class="form-control" 
-                               placeholder="example@email.com" 
-                               required>
-                    </div>
-                    
-                    <div class="form-group">
-                        <label for="phone">
-                            <i class="fas fa-phone"></i> رقم الهاتف (اختياري)
-                        </label>
-                        <input type="tel" 
-                               id="phone" 
-                               name="phone"
-                               class="form-control" 
-                               placeholder="05XXXXXXXX">
-                    </div>
-                    
-                    <div class="form-group">
-                        <label for="subject">
-                            <i class="fas fa-tag"></i> الموضوع
-                        </label>
-                        <select id="subject" name="subject" class="form-control" required>
-                            <option value="">اختر موضوع الرسالة</option>
-                            <option value="استفسار">استفسار عام</option>
-                            <option value="تعاون">طلب تعاون</option>
-                            <option value="مشروع">مشروع جديد</option>
-                            <option value="اقتراح">اقتراح أو فكرة</option>
-                            <option value="مقابلة">طلب مقابلة</option>
-                            <option value="أخرى">أخرى</option>
-                        </select>
-                    </div>
-                    
-                    <div class="form-group">
-                        <label for="message">
-                            <i class="fas fa-comment-dots"></i> الرسالة
-                        </label>
-                        <textarea id="message" 
-                                  name="message"
-                                  class="form-control" 
-                                  placeholder="اكتب رسالتك هنا بالتفصيل..." 
-                                  required></textarea>
-                    </div>
-                    
-                    <!-- حقل مخفي للرد التلقائي -->
-                    <input type="hidden" name="_replyto" id="replyTo">
-                    <input type="hidden" name="_subject" value="رسالة جديدة من موقعي الشخصي">
-                    
-                    <button type="submit" class="submit-btn" id="submitBtn">
-                        <i class="fas fa-paper-plane"></i> إرسال الرسالة
-                    </button>
-                </form>
-                
-
-            </div>
-
-            <!-- معلومات الاتصال -->
-            <div class="contact-info">
-                <h2 style="color: var(--dark); margin-bottom: 30px;">
-                    <i class="fas fa-address-card"></i> معلومات التواصل
-                </h2>
-                
-                <div class="info-item">
-                    <div class="info-icon">
-                        <i class="fas fa-envelope-open-text"></i>
-                    </div>
-                    <div class="info-content">
-                        <h3>البريد الإلكتروني</h3>
-                        <p>يمكنك مراسلتي مباشرة على:</p>
-                        <p style="color: var(--primary); font-weight: bold; font-size: 1.1rem;">
-                            contact@mywebsite.com
-                        </p>
-                    </div>
-                </div>
-                
-                <div class="info-item">
-                    <div class="info-icon">
-                        <i class="fas fa-phone-alt"></i>
-                    </div>
-                    <div class="info-content">
-                        <h3>الهاتف</h3>
-                        <p>متاح للاتصال خلال:</p>
-                        <p style="color: var(--primary); font-weight: bold; font-size: 1.1rem;">
-                            9:00 ص - 5:00 م (بتوقيت السعودية)
-                        </p>
-                        <p>+966 50 123 4567</p>
-                    </div>
-                </div>
-                
-                <div class="info-item">
-                    <div class="info-icon">
-                        <i class="fas fa-map-marker-alt"></i>
-                    </div>
-                    <div class="info-content">
-                        <h3>الموقع</h3>
-                        <p>أقيم حالياً في:</p>
-                        <p style="color: var(--primary); font-weight: bold; font-size: 1.1rem;">
-                            الرياض، المملكة العربية السعودية
-                        </p>
-                        <p>متاح للعمل عن بُعد</p>
-                    </div>
-                </div>
-                
-                <div class="info-item">
-                    <div class="info-icon">
-                        <i class="fas fa-share-alt"></i>
-                    </div>
-                    <div class="info-content">
-                        <h3>وسائل التواصل</h3>
-                        <p>تابعني على:</p>
-                        <div class="social-links">
-                            <a href="#" class="social-link" title="Twitter">
-                                <i class="fab fa-twitter"></i>
-                            </a>
-                            <a href="#" class="social-link" title="LinkedIn">
-                                <i class="fab fa-linkedin-in"></i>
-                            </a>
-                            <a href="#" class="social-link" title="GitHub">
-                                <i class="fab fa-github"></i>
-                            </a>
-                            <a href="#" class="social-link" title="Instagram">
-                                <i class="fab fa-instagram"></i>
-                            </a>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-
-        <!-- الخريطة -->
-        <div class="map-container">
-            <h2 style="color: var(--dark); margin-bottom: 25px;">
-                <i class="fas fa-map"></i> موقعي الجغرافي
-            </h2>
-            <div class="map-placeholder">
-                <i class="fas fa-map-marked-alt"></i>
-                <h3 style="margin: 15px 0;">الرياض، السعودية</h3>
-                <p>أعمل حالياً من الرياض، ومتاح للعمل مع فريق من أي مكان في العالم</p>
-            </div>
-        </div>
-
-        <!-- الأسئلة الشائعة -->
-        <div style="background: white; padding: 40px; border-radius: 20px; margin: 50px 0; box-shadow: 0 10px 30px rgba(0,0,0,0.08);">
-            <h2 style="color: var(--dark); margin-bottom: 30px; text-align: center;">
-                <i class="fas fa-question-circle"></i> الأسئلة الشائعة
-            </h2>
-            
-            <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 20px;">
-                <div class="faq-item" style="background: var(--light); padding: 20px; border-radius: 10px;">
-                    <h4 style="color: var(--primary); margin-bottom: 10px;">
-                        <i class="fas fa-clock"></i> كم من الوقت يستغرق الرد؟
-                    </h4>
-                    <p>أحاول الرد خلال 24 ساعة كحد أقصى، وفي العادة تكون أقل من 12 ساعة.</p>
-                </div>
-                
-                <div class="faq-item" style="background: var(--light); padding: 20px; border-radius: 10px;">
-                    <h4 style="color: var(--primary); margin-bottom: 10px;">
-                        <i class="fas fa-check-circle"></i> كيف أعرف أن رسالتي وصلت؟
-                    </h4>
-                    <p>بعد الإرسال الناجح، ستتلقى رسالة تأكيد على نفس البريد الإلكتروني.</p>
-                </div>
-                
-                <div class="faq-item" style="background: var(--light); padding: 20px; border-radius: 10px;">
-                    <h4 style="color: var(--primary); margin-bottom: 10px;">
-                        <i class="fas fa-shield-alt"></i> هل بياناتي آمنة؟
-                    </h4>
-                    <p>نعم، Formspree يستخدم تشفير SSL وتلتزم بسياسات الخصوصية.</p>
-                </div>
-            </div>
-        </div>
-        
-        <!-- قسم لإرسال رسالة تجريبية -->
-        <div style="background: #e8f4fc; padding: 30px; border-radius: 20px; margin: 40px 0; text-align: center;">
-            <h3 style="color: var(--primary); margin-bottom: 15px;">
-                <i class="fas fa-vial"></i> جرب إرسال رسالة تجريبية
-            </h3>
-            <p style="margin-bottom: 20px;">اختبر النموذج بإرسال رسالة تجريبية إلى نفسك أولاً</p>
-            <button onclick="sendTestMessage()" style="background: var(--primary); color: white; border: none; padding: 12px 25px; border-radius: 8px; cursor: pointer;">
-                <i class="fas fa-paper-plane"></i> إرسال رسالة تجريبية
-            </button>
         </div>
     </div>
 
-    <!-- التذييل -->
+    <!-- Main Form -->
+    <div class="form-container">
+        <h2 style="color: #333; margin-bottom: 10px; text-align: center;">
+            <i class="fas fa-comment-alt"></i> نموذج الإرسال المتكامل
+        </h2>
+        <p style="color: #666; text-align: center; margin-bottom: 30px;">
+            املأ النموذج وأرسل. ستصل رسالتك إلى بريدي الإلكتروني وإلى تليجرام فوراً
+        </p>
+
+        <!-- Status Messages -->
+        <div id="statusMessage" class="status-message"></div>
+
+        <!-- Contact Form -->
+        <form id="contactForm" action="https://formspree.io/f/xeekrjrd" method="POST">
+            <!-- Personal Info -->
+            <div class="form-group">
+                <label class="form-label">
+                    <i class="fas fa-user-circle"></i>
+                    <span>الاسم الكامل</span>
+                </label>
+                <input type="text" id="fullName" name="name" class="form-input" 
+                       placeholder="أدخل اسمك الثلاثي" required>
+            </div>
+
+            <div class="form-group">
+                <label class="form-label">
+                    <i class="fas fa-envelope"></i>
+                    <span>البريد الإلكتروني</span>
+                </label>
+                <input type="email" id="userEmail" name="email" class="form-input" 
+                       placeholder="example@email.com" required>
+            </div>
+
+            <!-- Contact Details -->
+            <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 20px;">
+                <div class="form-group">
+                    <label class="form-label">
+                        <i class="fas fa-phone"></i>
+                        <span>رقم الهاتف</span>
+                    </label>
+                    <input type="tel" id="phoneNumber" name="phone" class="form-input" 
+                           placeholder="05XXXXXXXX">
+                </div>
+
+                <div class="form-group">
+                    <label class="form-label">
+                        <i class="fas fa-tag"></i>
+                        <span>نوع الرسالة</span>
+                    </label>
+                    <select id="messageType" name="type" class="form-input" required>
+                        <option value="">اختر نوع الرسالة</option>
+                        <option value="استفسار">استفسار</option>
+                        <option value="تعاون">طلب تعاون</option>
+                        <option value="مقابلة">مقابلة عمل</option>
+                        <option value="شكوى">شكوى أو اقتراح</option>
+                        <option value="أخرى">أخرى</option>
+                    </select>
+                </div>
+            </div>
+
+            <!-- Message -->
+            <div class="form-group">
+                <label class="form-label">
+                    <i class="fas fa-comment-dots"></i>
+                    <span>الرسالة</span>
+                </label>
+                <textarea id="userMessage" name="message" class="form-input" 
+                          placeholder="اكتب رسالتك هنا بتفصيل..." required></textarea>
+            </div>
+
+            <!-- Hidden Fields for Formspree -->
+            <input type="hidden" name="_replyto" id="replyToEmail">
+            <input type="hidden" name="_subject" value="رسالة جديدة من النموذج المتكامل">
+
+            <!-- Submit Button -->
+            <button type="submit" class="submit-btn" id="submitButton">
+                <i class="fas fa-paper-plane"></i>
+                <span>إرسال الرسالة</span>
+            </button>
+        </form>
+
+        <!-- Results Panel -->
+        <div class="results-panel" id="resultsPanel">
+            <h3 style="margin-bottom: 20px; color: #333;">
+                <i class="fas fa-list-check"></i> نتائج الإرسال
+            </h3>
+            
+            <div class="result-item" id="emailResult">
+                <div>
+                    <i class="fas fa-envelope" style="color: var(--email); font-size: 1.5rem;"></i>
+                </div>
+                <div>
+                    <strong>البريد الإلكتروني:</strong>
+                    <div id="emailStatusText">في انتظار الإرسال...</div>
+                </div>
+            </div>
+            
+            <div class="result-item" id="telegramResult">
+                <div>
+                    <i class="fab fa-telegram-plane" style="color: var(--telegram); font-size: 1.5rem;"></i>
+                </div>
+                <div>
+                    <strong>تيليجرام بوت:</strong>
+                    <div id="telegramStatusText">في انتظار الإرسال...</div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Footer -->
     <footer>
-        <div style="display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap;">
-            <div>
-                <h3 style="color: white; margin-bottom: 10px;">
-                    <i class="fas fa-code"></i> اتصل بي
-                </h3>
-                <p style="opacity: 0.8; font-size: 0.9em;">
-                    جاهز لسماع أفكارك ومقترحاتك
+        <div style="max-width: 1200px; margin: 0 auto;">
+            <h3 style="margin-bottom: 15px;">
+                <i class="fas fa-robot"></i> نظام الإرسال المتكامل
+            </h3>
+            
+            <div style="display: flex; justify-content: center; gap: 30px; margin: 20px 0; flex-wrap: wrap;">
+                <div style="text-align: center;">
+                    <div style="color: var(--email); font-size: 2rem; margin-bottom: 10px;">
+                        <i class="fas fa-envelope"></i>
+                    </div>
+                    <div>Formspree API</div>
+                </div>
+                
+                <div style="text-align: center;">
+                    <div style="color: var(--telegram); font-size: 2rem; margin-bottom: 10px;">
+                        <i class="fab fa-telegram-plane"></i>
+                    </div>
+                    <div>Telegram Bot API</div>
+                </div>
+            </div>
+            
+            <div style="margin: 20px 0;">
+                <p id="systemTime" style="color: #667eea; font-weight: bold; font-size: 1.1rem;"></p>
+                <p id="systemStatus" style="opacity: 0.8;">
+                    <span id="systemIcon"><i class="fas fa-circle" style="color: var(--success);"></i></span>
+                    <span id="systemText">النظام جاهز للإرسال</span>
                 </p>
             </div>
             
-            <div style="margin-top: 20px;">
-                <p id="current-time" style="color: #667eea; font-weight: bold;"></p>
-                <p id="form-status" style="opacity: 0.8; font-size: 0.9em;">
-                    <span id="status-icon"><i class="fas fa-circle" style="color: #28a745; font-size: 0.8em;"></i></span>
-                    <span id="status-text">النموذج جاهز</span>
-                </p>
-            </div>
-        </div>
-        
-        <div style="text-align: center; margin-top: 30px; padding-top: 20px; border-top: 1px solid rgba(255,255,255,0.1);">
-            <p style="opacity: 0.7;">© 2024 موقعي الشخصي | قسم الاتصال</p>
-            <p style="margin-top: 10px;">
-                <a href="../index.html" style="color: #667eea; text-decoration: none; margin: 0 10px;">
-                    <i class="fas fa-home"></i> الرئيسية
-                </a>
-                <a href="about.html" style="color: #667eea; text-decoration: none; margin: 0 10px;">
-                    <i class="fas fa-user"></i> من أنا
-                </a>
-                <a href="contact.html" style="color: #667eea; text-decoration: none; margin: 0 10px;">
-                    <i class="fas fa-envelope"></i> اتصل بي
-                </a>
+            <p style="opacity: 0.7; margin-top: 30px; padding-top: 20px; border-top: 1px solid rgba(255,255,255,0.1);">
+                © 2024 نظام الإرسال المتكامل | جميع الحقوق محفوظة
             </p>
         </div>
     </footer>
 
-    <!-- الربط مع script.js -->
-    <script src="../script.js"></script>
-    
-    <!-- كود خاص بصفحة الاتصال مع Formspree -->
+    <!-- JavaScript -->
     <script>
-        document.addEventListener('DOMContentLoaded', function() {
-            // تهيئة Formspree
-            console.log('📧 صفحة الاتصال جاهزة مع Formspree');
+        // ========== CONFIGURATION ==========
+        const TELEGRAM_BOT_TOKEN = '8443839182:AAHlH3mdltb9928V33Yzz8FO_dNgS1i3z0I';
+        const TELEGRAM_CHAT_ID = '8477771530'; // ✅ تم تعيين chat_id الصحيح
+        
+        const FORMSPREE_ENDPOINT = 'https://formspree.io/f/xeekrjrd';
+        
+        // ========== DOM ELEMENTS ==========
+        const contactForm = document.getElementById('contactForm');
+        const submitButton = document.getElementById('submitButton');
+        const statusMessage = document.getElementById('statusMessage');
+        const resultsPanel = document.getElementById('resultsPanel');
+        const emailResult = document.getElementById('emailResult');
+        const telegramResult = document.getElementById('telegramResult');
+        const emailStatusText = document.getElementById('emailStatusText');
+        const telegramStatusText = document.getElementById('telegramStatusText');
+        const botStatus = document.getElementById('botStatus');
+        const botStatusText = document.getElementById('botStatusText');
+
+        // ========== INITIALIZATION ==========
+        document.addEventListener('DOMContentLoaded', async function() {
+            console.log('🚀 نظام الإرسال المتكامل - تم التحميل');
+            console.log('🤖 البوت: @zaher007_website_bot');
+            console.log('🔑 التوكن: ' + TELEGRAM_BOT_TOKEN.substring(0, 10) + '...');
+            console.log('✅ Chat ID: ' + TELEGRAM_CHAT_ID);
             
-            // تحديث الوقت
-            function updateTime() {
+            // Set up auto-reply email
+            document.getElementById('userEmail').addEventListener('input', function() {
+                document.getElementById('replyToEmail').value = this.value;
+            });
+
+            // Update system time
+            function updateSystemTime() {
                 const now = new Date();
-                const timeStr = now.toLocaleTimeString('ar-EG');
-                document.getElementById('current-time').textContent = timeStr;
+                const timeString = now.toLocaleTimeString('ar-SA', {
+                    hour: '2-digit',
+                    minute: '2-digit',
+                    second: '2-digit'
+                });
+                document.getElementById('systemTime').innerHTML = 
+                    `<i class="far fa-clock"></i> ${timeString}`;
             }
-            updateTime();
-            setInterval(updateTime, 1000);
+            updateSystemTime();
+            setInterval(updateSystemTime, 1000);
+
+            // Check Telegram bot status
+            await checkBotStatus();
             
-            // تعيين حقل الرد التلقائي
-            document.getElementById('replyTo').value = document.getElementById('email').value;
-            document.getElementById('email').addEventListener('input', function() {
-                document.getElementById('replyTo').value = this.value;
-            });
-            
-            // معالجة نموذج Formspree
-            const contactForm = document.getElementById('contactForm');
-            const formMessage = document.getElementById('formMessage');
-            const submitBtn = document.getElementById('submitBtn');
-            const statusIcon = document.getElementById('status-icon');
-            const statusText = document.getElementById('status-text');
-            
-            contactForm.addEventListener('submit', async function(e) {
-                e.preventDefault();
-                
-                // التحقق من الحقول
-                const name = document.getElementById('name').value.trim();
-                const email = document.getElementById('email').value.trim();
-                const subject = document.getElementById('subject').value;
-                const message = document.getElementById('message').value.trim();
-                
-                if (!name || !email || !subject || !message) {
-                    showMessage('يرجى ملء جميع الحقول المطلوبة', 'error');
-                    return;
-                }
-                
-                if (!validateEmail(email)) {
-                    showMessage('يرجى إدخال بريد إلكتروني صحيح', 'error');
-                    return;
-                }
-                
-                // تغيير حالة الزر
-                const originalBtnText = submitBtn.innerHTML;
-                submitBtn.innerHTML = '<i class="fas fa-spinner fa-spin"></i> جاري الإرسال...';
-                submitBtn.disabled = true;
-                
-                // تغيير حالة النموذج
-                statusIcon.innerHTML = '<i class="fas fa-sync-alt fa-spin" style="color: #ffc107;"></i>';
-                statusText.textContent = 'جاري إرسال الرسالة...';
-                
-                try {
-                    // إرسال البيانات إلى Formspree
-                    const formData = new FormData(this);
-                    
-                    const response = await fetch(this.action, {
-                        method: 'POST',
-                        body: formData,
-                        headers: {
-                            'Accept': 'application/json'
-                        }
-                    });
-                    
-                    if (response.ok) {
-                        // نجاح الإرسال
-                        showMessage(`شكراً ${name}! تم إرسال رسالتك بنجاح. ستتلقى تأكيداً على بريدك قريباً.`, 'success');
-                        contactForm.reset();
-                        
-                        // حفظ محلي للنسخ الاحتياطي
-                        saveMessageLocally(name, email, subject, message);
-                        
-                        // تحديث الحالة
-                        statusIcon.innerHTML = '<i class="fas fa-check-circle" style="color: #28a745;"></i>';
-                        statusText.textContent = `تم الإرسال: ${new Date().toLocaleTimeString('ar-EG')}`;
-                        
-                        // رسالة في الكونسول
-                        console.log('✅ تم إرسال الرسالة بنجاح عبر Formspree');
-                        console.log(`📨 من: ${name} (${email})`);
-                        
-                    } else {
-                        // خطأ في الإرسال
-                        const errorData = await response.json();
-                        throw new Error(errorData.error || 'فشل في إرسال الرسالة');
-                    }
-                    
-                } catch (error) {
-                    // في حالة الخطأ، نستخدم التخزين المحلي كنسخة احتياطية
-                    console.warn('⚠️ Formspree فشل، استخدام النسخ الاحتياطي المحلي:', error.message);
-                    
-                    saveMessageLocally(name, email, subject, message);
-                    showMessage(`تم حفظ رسالتك محلياً. سأتواصل معك قريباً.`, 'success');
-                    
-                    statusIcon.innerHTML = '<i class="fas fa-exclamation-triangle" style="color: #ffc107;"></i>';
-                    statusText.textContent = 'مخزن محلياً';
-                    
-                } finally {
-                    // استعادة الزر
-                    submitBtn.innerHTML = originalBtnText;
-                    submitBtn.disabled = false;
-                }
-            });
-            
-            // وظيفة حفظ محلي
-            function saveMessageLocally(name, email, subject, message) {
-                const messages = JSON.parse(localStorage.getItem('contactMessages') || '[]');
-                const newMessage = {
-                    id: Date.now(),
-                    name,
-                    email,
-                    subject,
-                    message,
-                    date: new Date().toLocaleString('ar-EG'),
-                    source: 'formspree_fallback'
-                };
-                messages.push(newMessage);
-                localStorage.setItem('contactMessages', JSON.stringify(messages));
-                
-                console.log('💾 تم حفظ الرسالة محلياً:', newMessage);
-            }
-            
-            // وظيفة التحقق من البريد
-            function validateEmail(email) {
-                const re = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-                return re.test(email);
-            }
-            
-            // وظيفة إظهار الرسائل
-            function showMessage(text, type) {
-                formMessage.textContent = text;
-                formMessage.className = `form-message ${type}`;
-                formMessage.style.display = 'block';
-                
-                setTimeout(() => {
-                    formMessage.style.display = 'none';
-                }, 5000);
-            }
-            
-            // رسالة ترحيب في الكونسول
-            console.log('%c📞 صفحة الاتصال مع Formspree', 'color: #4361ee; font-size: 16px; font-weight: bold;');
-            console.log('%c🚀 جاهز لإرسال رسائل حقيقية!', 'color: #f72585;');
-            console.log('💡 تذكر: استبدل YOUR_FORM_ID_HERE في السطر 229 بمعرف Formspree الخاص بك');
+            // Test Telegram connection
+            await testTelegramConnection();
         });
-        
-        // إرسال رسالة تجريبية
-        function sendTestMessage() {
-            document.getElementById('name').value = 'مستخدم تجريبي';
-            document.getElementById('email').value = 'test@example.com';
-            document.getElementById('phone').value = '0501234567';
-            document.getElementById('subject').value = 'رسالة تجريبية';
-            document.getElementById('message').value = 'هذه رسالة تجريبية لاختبار نموذج الاتصال. إذا رأيت هذه الرسالة، فالنموذج يعمل بشكل صحيح!';
-            
-            alert('📝 تم تعبئة النموذج برسالة تجريبية.\n\nالآن اضغط على زر "إرسال الرسالة" لاختبار النظام.\n\nتأكد من استبدال YOUR_FORM_ID_HERE في الكود أولاً!');
+
+        // ========== TELEGRAM FUNCTIONS ==========
+        async function checkBotStatus() {
+            try {
+                botStatusText.innerHTML = '<i class="fas fa-spinner loading-spinner"></i> جارِ التحقق من البوت...';
+                
+                const response = await fetch(
+                    `https://api.telegram.org/bot${TELEGRAM_BOT_TOKEN}/getMe`
+                );
+                
+                const data = await response.json();
+                
+                if (data.ok) {
+                    botStatusText.innerHTML = 
+                        `<i class="fas fa-check-circle" style="color: var(--success);"></i> البوت نشط: @${data.result.username}`;
+                    botStatus.style.background = 'rgba(40, 167, 69, 0.1)';
+                    botStatus.style.borderColor = 'var(--success)';
+                    
+                    console.log('✅ Telegram Bot Status:', data.result);
+                    return true;
+                } else {
+                    botStatusText.innerHTML = 
+                        `<i class="fas fa-times-circle" style="color: var(--danger);"></i> خطأ في البوت: ${data.description}`;
+                    botStatus.style.background = 'rgba(220, 53, 69, 0.1)';
+                    console.error('❌ Telegram Bot Error:', data);
+                    return false;
+                }
+            } catch (error) {
+                botStatusText.innerHTML = 
+                    `<i class="fas fa-exclamation-triangle" style="color: var(--warning);"></i> خطأ في الاتصال بالبوت`;
+                console.error('❌ Network Error:', error);
+                return false;
+            }
         }
-        
-        // وظائف مساعدة للكونسول
-        window.formspreeHelper = {
-            checkMessages: function() {
-                const messages = JSON.parse(localStorage.getItem('contactMessages') || '[]');
-                console.log('📬 الرسائل المحفوظة:', messages);
-                return messages;
-            },
+
+        async function testTelegramConnection() {
+            try {
+                console.log('🔗 اختبار اتصال تيليجرام...');
+                
+                const testMessage = encodeURIComponent('✅ اتصال البوت يعمل بشكل صحيح!');
+                const url = `https://api.telegram.org/bot${TELEGRAM_BOT_TOKEN}/sendMessage?chat_id=${TELEGRAM_CHAT_ID}&text=${testMessage}`;
+                
+                const response = await fetch(url);
+                const result = await response.json();
+                
+                if (result.ok) {
+                    console.log('✅ اتصال تيليجرام يعمل بنجاح!');
+                    return true;
+                } else {
+                    console.error('❌ خطأ في اتصال تيليجرام:', result);
+                    return false;
+                }
+            } catch (error) {
+                console.error('❌ خطأ شبكة:', error);
+                return false;
+            }
+        }
+
+        async function sendToTelegram(formData) {
+            try {
+                console.log('📱 جاري إرسال إلى تيليجرام...');
+                
+                // Format the message
+                const message = `
+📬 *رسالة جديدة من موقعك* 
+
+👤 *الاسم:* ${formData.name}
+📧 *البريد:* ${formData.email}
+📞 *الهاتف:* ${formData.phone || 'غير محدد'}
+🏷️ *النوع:* ${formData.type}
+💬 *الرسالة:*
+${formData.message}
+
+🕐 *الوقت:* ${new Date().toLocaleString('ar-SA')}
+                `;
+                
+                // URL encode
+                const encodedMessage = encodeURIComponent(message);
+                
+                // Build Telegram URL
+                const url = `https://api.telegram.org/bot${TELEGRAM_BOT_TOKEN}/sendMessage?chat_id=${TELEGRAM_CHAT_ID}&text=${encodedMessage}&parse_mode=Markdown`;
+                
+                console.log('🔗 إرسال إلى تيليجرام...');
+                
+                // Send request
+                const response = await fetch(url);
+                const result = await response.json();
+                
+                console.log('📱 نتيجة تيليجرام:', result);
+                
+                if (result.ok) {
+                    console.log('✅ تم الإرسال بنجاح إلى تيليجرام');
+                    return { success: true, message: 'تم الإرسال إلى تيليجرام' };
+                } else {
+                    console.error('❌ خطأ تيليجرام:', result);
+                    return { 
+                        success: false, 
+                        message: `خطأ: ${result.description || 'غير معروف'}` 
+                    };
+                }
+            } catch (error) {
+                console.error('❌ خطأ شبكة:', error);
+                return { 
+                    success: false, 
+                    message: 'خطأ في الاتصال بتيليجرام' 
+                };
+            }
+        }
+
+        // ========== FORMSPREE FUNCTIONS ==========
+        async function sendToFormspree(formData) {
+            try {
+                console.log('📧 جاري إرسال إلى Formspree...');
+                
+                const formDataObj = new FormData();
+                formDataObj.append('name', formData.name);
+                formDataObj.append('email', formData.email);
+                formDataObj.append('phone', formData.phone || '');
+                formDataObj.append('type', formData.type);
+                formDataObj.append('message', formData.message);
+                formDataObj.append('_replyto', formData.email);
+                formDataObj.append('_subject', 'رسالة جديدة من الموقع');
+
+                const response = await fetch(FORMSPREE_ENDPOINT, {
+                    method: 'POST',
+                    body: formDataObj,
+                    headers: { 'Accept': 'application/json' }
+                });
+
+                if (response.ok) {
+                    console.log('✅ تم الإرسال بنجاح إلى Formspree');
+                    return { success: true, message: 'تم الإرسال إلى البريد' };
+                } else {
+                    const error = await response.json();
+                    console.error('❌ خطأ Formspree:', error);
+                    return { success: false, message: 'فشل إرسال البريد' };
+                }
+            } catch (error) {
+                console.error('❌ خطأ شبكة Formspree:', error);
+                return { success: false, message: 'خطأ في الاتصال' };
+            }
+        }
+
+        // ========== FORM SUBMISSION ==========
+        contactForm.addEventListener('submit', async function(e) {
+            e.preventDefault();
             
-            clearMessages: function() {
-                localStorage.removeItem('contactMessages');
-                console.log('🗑️ تم مسح جميع الرسائل المحفوظة');
-            },
+            // Get form data
+            const formData = {
+                name: document.getElementById('fullName').value.trim(),
+                email: document.getElementById('userEmail').value.trim(),
+                phone: document.getElementById('phoneNumber').value.trim(),
+                type: document.getElementById('messageType').value,
+                message: document.getElementById('userMessage').value.trim()
+            };
+
+            // Validation
+            if (!validateForm(formData)) {
+                return;
+            }
+
+            // Update UI
+            updateStep(2);
+            submitButton.disabled = true;
+            submitButton.innerHTML = '<i class="fas fa-spinner loading-spinner"></i> جاري الإرسال...';
             
-            getFormAction: function() {
-                const form = document.getElementById('contactForm');
-                console.log('🔗 Formspree URL:', form.action);
-                return form.action;
-            },
+            // Show results panel
+            resultsPanel.style.display = 'block';
+            emailStatusText.textContent = 'جاري الإرسال...';
+            telegramStatusText.textContent = 'جاري الإرسال...';
+
+            // Reset results
+            emailResult.className = 'result-item';
+            telegramResult.className = 'result-item';
+
+            // Send to both services
+            const [formspreeResult, telegramResultData] = await Promise.allSettled([
+                sendToFormspree(formData),
+                sendToTelegram(formData)
+            ]);
+
+            // Process results
+            const emailSuccess = formspreeResult.status === 'fulfilled' && formspreeResult.value.success;
+            const telegramSuccess = telegramResultData.status === 'fulfilled' && telegramResultData.value.success;
+
+            // Update UI with results
+            if (emailSuccess) {
+                emailResult.classList.add('success');
+                emailStatusText.innerHTML = '<i class="fas fa-check-circle" style="color: var(--success);"></i> تم الإرسال بنجاح';
+            } else {
+                emailResult.classList.add('error');
+                emailStatusText.innerHTML = '<i class="fas fa-times-circle" style="color: var(--danger);"></i> فشل الإرسال';
+            }
+
+            if (telegramSuccess) {
+                telegramResult.classList.add('success');
+                telegramStatusText.innerHTML = '<i class="fas fa-check-circle" style="color: var(--success);"></i> تم الإرسال بنجاح';
+            } else {
+                telegramResult.classList.add('error');
+                const errorMsg = telegramResultData.value?.message || 'فشل الإرسال';
+                telegramStatusText.innerHTML = `<i class="fas fa-times-circle" style="color: var(--danger);"></i> ${errorMsg}`;
+            }
+
+            // Update final status
+            if (emailSuccess || telegramSuccess) {
+                updateStep(3);
+                
+                let successMessage = '✅ تم استلام رسالتك!';
+                if (emailSuccess && telegramSuccess) {
+                    successMessage += ' وصلت إلى البريد وتيليجرام';
+                } else if (emailSuccess) {
+                    successMessage += ' وصلت إلى البريد';
+                } else if (telegramSuccess) {
+                    successMessage += ' وصلت إلى تيليجرام';
+                }
+                
+                showStatusMessage(successMessage, 'success');
+                
+                // Reset form after 3 seconds
+                setTimeout(() => {
+                    contactForm.reset();
+                    resultsPanel.style.display = 'none';
+                    updateStep(1);
+                }, 3000);
+            } else {
+                showStatusMessage('❌ فشل إرسال الرسالة. حاول مرة أخرى.', 'error');
+            }
+
+            // Reset button
+            submitButton.disabled = false;
+            submitButton.innerHTML = '<i class="fas fa-paper-plane"></i> إرسال الرسالة';
+        });
+
+        // ========== HELPER FUNCTIONS ==========
+        function validateForm(data) {
+            if (!data.name || !data.email || !data.type || !data.message) {
+                showStatusMessage('❌ يرجى ملء جميع الحقول المطلوبة', 'error');
+                return false;
+            }
+
+            if (!validateEmail(data.email)) {
+                showStatusMessage('❌ يرجى إدخال بريد إلكتروني صحيح', 'error');
+                return false;
+            }
+
+            return true;
+        }
+
+        function validateEmail(email) {
+            const re = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+            return re.test(email);
+        }
+
+        function showStatusMessage(message, type) {
+            statusMessage.textContent = message;
+            statusMessage.className = `status-message status-${type}`;
+            statusMessage.style.display = 'block';
             
-            testValidation: function() {
-                document.getElementById('contactForm').reportValidity();
+            setTimeout(() => {
+                statusMessage.style.display = 'none';
+            }, 5000);
+        }
+
+        function updateStep(stepNumber) {
+            // Reset all steps
+            [document.getElementById('step1'), 
+             document.getElementById('step2'), 
+             document.getElementById('step3')].forEach(step => {
+                if (step) step.classList.remove('active');
+            });
+            
+            // Activate current step and previous ones
+            for (let i = 1; i <= stepNumber; i++) {
+                const step = document.getElementById(`step${i}`);
+                if (step) step.classList.add('active');
+            }
+        }
+
+        // ========== GLOBAL FUNCTIONS FOR TESTING ==========
+        window.sendTestMessage = async function() {
+            console.log('🧪 إرسال رسالة تجريبية...');
+            
+            const testData = {
+                name: 'اختبار النظام',
+                email: 'test@example.com',
+                phone: '0512345678',
+                type: 'اختبار',
+                message: 'هذه رسالة اختبار من الموقع'
+            };
+            
+            const result = await sendToTelegram(testData);
+            
+            if (result.success) {
+                alert('✅ تم إرسال رسالة اختبار بنجاح!');
+            } else {
+                alert(`❌ ${result.message}`);
             }
         };
+
+        // Welcome message
+        console.log('🎉 النظام جاهز للعمل!');
+        console.log('💡 يمكنك اختبار النظام بأحد الطرق:');
+        console.log('   1. املأ النموذج واضغط إرسال');
+        console.log('   2. افتح وحدة التحكم (F12) واكتب: sendTestMessage()');
     </script>
 </body>
 </html>
